@@ -1,3 +1,14 @@
 <link rel="stylesheet" href="app.component.css">
+
+<nav mat-tab-nav-bar >
+    <a mat-tab-link routerLink="/projects-component" routerLinkActive="active"> Projects Page </a>
+    <a mat-tab-link routerLink="/project-component" routerLinkActive="active"> Project Page </a>
+    <a mat-tab-link routerLink="/list-component" routerLinkActive="active"> List Page </a>
+    <a mat-tab-link routerLink="/users-component" routerLinkActive="active"> Users Page </a>
+    <a mat-tab-link routerLink="/admin-component" routerLinkActive="active"> Admin Page </a>
+
+    <!--<a mat-tab-link disabled>Disabled Link</a>-->
+  </nav>
+
 <p>This is the homepage for ArtoriasWeb!</p>
 <router-outlet></router-outlet>

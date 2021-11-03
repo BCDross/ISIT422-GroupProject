@@ -290,3 +290,7 @@ svg#clouds {
     visibility: hidden;
   }
 }
+.example-action-button {
+  margin-top: 8px;
+  margin-right: 8px;
+}
