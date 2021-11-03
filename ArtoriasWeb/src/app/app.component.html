@@ -10,5 +10,15 @@
     <!--<a mat-tab-link disabled>Disabled Link</a>-->
   </nav>
 
-<p>This is the homepage for ArtoriasWeb!</p>
-<router-outlet></router-outlet>
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>Sidnav content
+        <mat-list role="list">
+            <mat-list-item role="listitem">Item 1</mat-list-item>
+            <mat-list-item role="listitem">Item 2</mat-list-item>
+            <mat-list-item role="listitem">Item 3</mat-list-item>
+          </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>  
