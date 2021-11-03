@@ -3,16 +3,40 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
-  id: {
+  name: {
     type: String,
     required: true
   },
-  content: {
+  status: {
     type: String,
-    required:false
+    required: true,
+    default: 'New'
   },
-  user: {
-    type: Schema.Types.ObjectId,
+  priority: {
+    type: Number,
+    required: true,
+    default: 3
+  },
+  description: {
+    type: String,
+    required: false
+  },
+  type: {
+    type: String,
+    required: 'Type cannot be blank'
+  },
+  parent: {
+    type: item,
+    required: false
+  },
+  children: {
+    type: [
+      item
+    ],
+    required: false
+  },
+  owner: {
+    type: Number,
     required: true
   }
 });

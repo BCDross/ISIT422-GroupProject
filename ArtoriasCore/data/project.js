@@ -1,18 +1,23 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
+const itemSchema = './item.js';
+const userSchema = './user.js';
 
-var ProjectSchema = new Schema({
+const ProjectSchema = new Schema({
   id: {
-    type: String,
+    type: Number,
     required: true
   },
   name: {
     type: String,
     required: false
   },
+  items: {
+    type: [itemSchema.id],
+  },
   user: {
-    type: Schema.Types.ObjectId,
+    type: userSchema.id,
     required: true
   }
 });
