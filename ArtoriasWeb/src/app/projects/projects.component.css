@@ -1,0 +1,12 @@
+.mat-row:nth-child(2n+1){
+    background-color: yellowgreen;
+}
+.mat-row:nth-child(2n){
+    background-color: whitesmoke;
+}
+.mat-header-row{
+  background-color: dimgrey;
+}
+table {
+  width: 100%;
+}
