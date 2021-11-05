@@ -26,17 +26,18 @@ const ItemSchema = new Schema({
     required: 'Type cannot be blank'
   },
   parent: {
-    type: item,
+    type: Schema.Types.ObjectId,
+    ref: 'Item',
     required: false
   },
-  children: {
-    type: [
-      item
-    ],
+  children: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Item',
     required: false
-  },
+  }],
   owner: {
-    type: Number,
+    type: Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   }
 });

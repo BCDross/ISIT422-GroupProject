@@ -5,19 +5,18 @@ const itemSchema = './item.js';
 const userSchema = './user.js';
 
 const ProjectSchema = new Schema({
-  id: {
-    type: Number,
-    required: true
-  },
   name: {
     type: String,
     required: false
   },
-  items: {
-    type: [itemSchema.id],
-  },
+  items: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Item',
+    required: false
+  }],
   user: {
-    type: userSchema.id,
+    type: Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   }
 });
