@@ -1,4 +1,4 @@
-<form #newItemForm=ngForm (ngSubmit) = onSubmit()>
+<!-- <form #newItemForm=ngForm (ngSubmit) = onSubmit()>
     <mat-card>
         <p>
             <mat-form-field appearance="standard" class="formField">
@@ -45,7 +45,9 @@
             <button mat-raised-button type="submit" color="primary">Save and Add</button>
         </mat-card-actions>
     </mat-card>
-</form>
+</form> -->
+
+<button mat-raised-button (click)="openDialog()" color="primary">New Item</button>
 
 <mat-list>
     <mat-list-item *ngFor="let item of items">{{item.name}}, {{item.status}}, {{item.priority}}, {{item.description}}, {{item.type}}</mat-list-item>

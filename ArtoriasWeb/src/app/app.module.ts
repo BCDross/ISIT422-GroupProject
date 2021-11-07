@@ -11,6 +11,7 @@ import { UsersComponent } from './users/users.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AdminComponent } from './admin/admin.component';
+import { NewItemComponent } from './new-item/new-item.component';
 
 import { MatTabsModule} from '@angular/material/tabs';
 import { MatGridListModule} from '@angular/material/grid-list';
@@ -22,7 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
-import { NewItemComponent } from './new-item/new-item.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { NewItemComponent } from './new-item/new-item.component';
     MatInputModule,
     MatTableModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
