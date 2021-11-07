@@ -1,43 +1,49 @@
 <form #newItemForm=ngForm (ngSubmit) = onSubmit()>
     <mat-card>
         <p>
-            <mat-form-field appearance="standard">
+            <mat-form-field appearance="standard" class="formField">
                 <mat-label>Name</mat-label>
-                <input matInput type="text" [formControl] = "name">
+                <input matInput type="text" [formControl] = "name" required>
             </mat-form-field>
-        </p>
 
-        <p>
-            <mat-form-field appearance="standard">
-                <mat-label>Status</mat-label>
-                <input matInput type="text" [formControl] = "status">
-            </mat-form-field>
-        </p>
-
-        <p>
-            <mat-form-field appearance="standard">
+            <mat-form-field appearance="standard" class="formField">
                 <mat-label>Priority</mat-label>
-                <input matInput type="text" [formControl] = "priority">
+                <input matInput type="number" [formControl] = "priority" required>
             </mat-form-field>
         </p>
 
         <p>
-            <mat-form-field appearance="standard">
-                <mat-label>Description</mat-label>
-                <input matInput type="text" [formControl] = "description">
+            <mat-form-field appearance="standard" class="formField">
+                <mat-label>Status</mat-label>
+                <mat-select matInput [formControl] = "status" required>
+                    <mat-option value="new">New</mat-option>
+                    <mat-option value="active">Active</mat-option>
+                    <mat-option value="resolved">Resolved</mat-option>
+                    <mat-option value="closed">Closed</mat-option>
+                </mat-select>
             </mat-form-field>
-        </p>
 
-        <p>
-            <mat-form-field appearance="standard">
+            <mat-form-field appearance="standard" class="formField">
                 <mat-label>Type</mat-label>
-                <input matInput type="text" [formControl] = "type">
+                <mat-select matInput [formControl] = "type" required>
+                    <mat-option value="bug">Bug</mat-option>
+                    <mat-option value="epic">Epic</mat-option>
+                    <mat-option value="feature">Feature</mat-option>
+                    <mat-option value="userstory">User Story</mat-option>
+                    <mat-option value="task">Task</mat-option>
+                    <mat-option value="issue">Issue</mat-option>
+                </mat-select>
             </mat-form-field>
         </p>
+
+        <mat-form-field appearance="standard" class="formField">
+            <mat-label>Description</mat-label>
+            <textarea rows="4" cols="200" matInput [formControl] = "description"></textarea>
+        </mat-form-field>
 
         <mat-card-actions>
             <button mat-raised-button type="submit" color="primary">Save and Add</button>
-          </mat-card-actions>
+        </mat-card-actions>
     </mat-card>
 </form>
 

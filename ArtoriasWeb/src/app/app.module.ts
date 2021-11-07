@@ -20,6 +20,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { NewItemComponent } from './new-item/new-item.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { MatTableModule } from '@angular/material/table';
     UsersComponent,
     ProjectComponent,
     ProjectsComponent,
-    AdminComponent
+    AdminComponent,
+    NewItemComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,11 +10,11 @@ import { Item } from '../Objects/item';
 })
 export class ListComponent implements OnInit {
 
-  name = new FormControl('');
-  status = new FormControl('');
-  priority = new FormControl('');
-  description = new FormControl('');
-  type = new FormControl('');
+  name = new FormControl();
+  status = new FormControl();
+  priority = new FormControl();
+  description = new FormControl();
+  type = new FormControl();
 
   items: Item[] = []//local copy of the list of items to display
   idSeed = 0;//VERY temporary solution for generating IDs
