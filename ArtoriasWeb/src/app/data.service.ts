@@ -12,10 +12,12 @@ export class DataService {
   }
 
   getItems() {
+    console.log("Returning items.");
     return this.items;
   }
 
   addItem(newItem: Item) {
     this.items.push(newItem);
+    console.log("New item received");
   }
 }
