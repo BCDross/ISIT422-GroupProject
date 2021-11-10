@@ -5,11 +5,11 @@ const logger = pine();
 
 export class APILogger {
 
-    info(message, data) {
+    info(message: any, data: any) {
         logger.info(`${message}   ${undefined != data ? JSON.stringify(data) : ''}`);
     }
 
-    error(message) {
+    error(message: any) {
         logger.error(message);
     }
 }

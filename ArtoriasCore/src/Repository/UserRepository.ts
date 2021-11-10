@@ -17,7 +17,7 @@ export class UserRepository {
         return users;
     }
 
-    async createUser(user) {
+    async createUser(user: any) {
         let data = {};
         try {
             data = await UserModel.create(user);
@@ -27,7 +27,7 @@ export class UserRepository {
         return data;
     }
 
-    async updateUser(user) {
+    async updateUser(user: any) {
         let data = {};
         try {
             data = await UserModel.updateOne(user);
@@ -37,7 +37,7 @@ export class UserRepository {
         return data;
     }
 
-    async deleteUser(userId) {
+    async deleteUser(userId: any) {
         let data: any = {};
         try {
             data = await UserModel.deleteOne({_id : userId});
