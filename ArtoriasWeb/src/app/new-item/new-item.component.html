@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>New Item</h1>
 <div mat-dialog-content>
-    <form #newItemForm=ngForm [formGroup]="itemForm" (ngSubmit) = onSubmit()>
+    <form #newItemForm=ngForm [formGroup]="itemForm">
         <mat-card>
             <p>
                 <mat-form-field appearance="standard" class="formField">
@@ -18,22 +18,22 @@
                 <mat-form-field appearance="standard" class="formField">
                     <mat-label>Status</mat-label>
                     <mat-select matInput formControlName = "status" required>
-                        <mat-option value="new">New</mat-option>
-                        <mat-option value="active">Active</mat-option>
-                        <mat-option value="resolved">Resolved</mat-option>
-                        <mat-option value="closed">Closed</mat-option>
+                        <mat-option value="New">New</mat-option>
+                        <mat-option value="Active">Active</mat-option>
+                        <mat-option value="Resolved">Resolved</mat-option>
+                        <mat-option value="Closed">Closed</mat-option>
                     </mat-select>
                 </mat-form-field>
     
                 <mat-form-field appearance="standard" class="formField">
                     <mat-label>Type</mat-label>
                     <mat-select matInput formControlName = "type" required>
-                        <mat-option value="bug">Bug</mat-option>
-                        <mat-option value="epic">Epic</mat-option>
-                        <mat-option value="feature">Feature</mat-option>
-                        <mat-option value="userstory">User Story</mat-option>
-                        <mat-option value="task">Task</mat-option>
-                        <mat-option value="issue">Issue</mat-option>
+                        <mat-option value="Bug">Bug</mat-option>
+                        <mat-option value="Epic">Epic</mat-option>
+                        <mat-option value="Feature">Feature</mat-option>
+                        <mat-option value="Userstory">User Story</mat-option>
+                        <mat-option value="Task">Task</mat-option>
+                        <mat-option value="Issue">Issue</mat-option>
                     </mat-select>
                 </mat-form-field>
             </p>
@@ -46,7 +46,7 @@
             <div mat-dialog-actions>
                 <mat-card-actions>
                     <button mat-button (click)="onNoClick()">Cancel</button>
-                    <button mat-raised-button type="submit" color="primary" [mat-dialog-close]="true" cdkFocusInitial>Save and Add</button>
+                    <button mat-raised-button (click)="onSubmit()" type="submit" color="primary" [mat-dialog-close]="true" cdkFocusInitial>Save and Add</button>
                 </mat-card-actions>
             </div>
         </mat-card>

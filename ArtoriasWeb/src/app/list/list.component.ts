@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { FormControl } from '@angular/forms';
 import { Item } from '../Objects/item';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { NewItemComponent } from '../new-item/new-item.component';
 
 @Component({
@@ -12,11 +11,6 @@ import { NewItemComponent } from '../new-item/new-item.component';
 })
 export class ListComponent implements OnInit {
 
-  // name = new FormControl();
-  // status = new FormControl();
-  // priority = new FormControl();
-  // description = new FormControl();
-  // type = new FormControl();
 
   items: Item[] = []//local copy of the list of items to display
   // idSeed = 0;//VERY temporary solution for generating IDs
