@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { Item } from '../Objects/item';
 import {MatDialog} from '@angular/material/dialog';
 import { NewItemComponent } from '../new-item/new-item.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-list',
@@ -11,24 +12,21 @@ import { NewItemComponent } from '../new-item/new-item.component';
 })
 export class ListComponent implements OnInit {
 
+  dataSource: MatTableDataSource<Item>;
+  items: Item[] = [];//local copy of the list of items to display
 
-  items: Item[] = []//local copy of the list of items to display
-  // idSeed = 0;//VERY temporary solution for generating IDs
+  displayedColumns = ["name","status","priority","type"]; // for displaying table columns
 
-  constructor(private dataService: DataService, public dialog: MatDialog) { }
-
-  ngOnInit(): void {
-    this.items = this.dataService.getItems(); //temp solution
+  constructor(private dataService: DataService, public dialog: MatDialog) {
+    this.dataSource = new MatTableDataSource(this.items);
   }
 
-  // onSubmit() {
-  //   let newItem:Item = new Item(this.idSeed+1,this.name.value,this.status.value,this.priority.value,this.type.value, this.description.value);
-
-  //   this.dataService.addItem(newItem);
-
-  //   this.items = this.dataService.getItems();
-
-  // }
+  ngOnInit(): void {
+    this.items = this.dataService.getItems();
+    this.dataSource.data = this.items;
+    console.log("ngOnInit called");
+     //temp solution
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NewItemComponent, {
@@ -39,6 +37,7 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result); //testing
+      this.dataSource.data = this.items;
     });
   }
 
