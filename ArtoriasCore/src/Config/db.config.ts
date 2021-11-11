@@ -1,29 +1,30 @@
-import Mongoose = require('mongoose');
-const env = require('dotenv').config()
+require('dotenv').config();
+import mongoose = require('mongoose');
 
-let database: Mongoose.Connection;
+let database: mongoose.Connection;
 
 export const connect = () => {
 
-    let url = env.MONGODB_URL;
-    console.log("from connect: process.env.MONGODB_URL :::",process.env.MONGODB_URL)
+    const url: string = (process.env.MONGODB_URL as string);
+    console.log(typeof(url));
+    console.log("from connect: process.env.MONGODB_URL :::",url);
 
     if (database) {
         return;
     }
     
     const options = {
-      useNewUrlParser: "true",
-      useFindAndModify: "false",
-      useUnifiedTopology: "true",
-      useCreateIndex: "true",
+      useNewUrlParser: true,
+      useFindAndModify: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
       maxPoolSize: 100,
       reconnectTries: Number.MAX_VALUE
-  }
+    }
 
-    Mongoose.connect(url, options);
+    mongoose.connect('mongodb+srv://422cdd:422cdd@realmcluster.tcjhw.mongodb.net/ArtoriasDB?retryWrites=true&w=majority', options);
     
-    database = Mongoose.connection;
+    database = mongoose.connection;
 
     database.once("open", async () => {
         console.log("Connected to database");
@@ -41,7 +42,7 @@ export const disconnect = () => {
       return;
     }
     
-    Mongoose.disconnect();
+    mongoose.disconnect();
 
     database.once("close", async () => {
         console.log("Disconnected from database");

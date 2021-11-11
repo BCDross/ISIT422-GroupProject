@@ -1,8 +1,7 @@
-import * as bodyParser from "body-parser";
 import express = require('express');
 import { APILogger } from "./Logger/apiLogger";
 import { UserController } from "./Controllers/UserController";
-//import swaggerUi = require('swagger-ui-express');
+import * as swaggerUi from 'swagger-ui-express';
 import fs = require('fs');
 
 class App {
@@ -12,10 +11,10 @@ class App {
     public userController: UserController;
 
     /* Swagger files start */
-    //private swaggerFile: any = (process.cwd()+"/swagger/swagger.json");
-    //private swaggerData: any = fs.readFileSync(this.swaggerFile, 'utf8');
-    //private customCss: any = fs.readFileSync((process.cwd()+"/swagger/swagger.css"), 'utf8');
-    //private swaggerDocument = JSON.parse(this.swaggerData);
+    private swaggerFile: any = (process.cwd()+"/src/Swagger/swagger.json");
+    private swaggerData: any = fs.readFileSync(this.swaggerFile, 'utf8');
+    private customCss: any = fs.readFileSync((process.cwd()+"/src/Swagger/swagger.css"), 'utf8');
+    private swaggerDocument = JSON.parse(this.swaggerData);
     /* Swagger files end */
 
 
@@ -29,8 +28,8 @@ class App {
 
     // Configure Express middleware.
     private middleware(): void {
-        this.express.use(bodyParser.json());
-        this.express.use(bodyParser.urlencoded({ extended: false }));
+        this.express.use(express.json());
+        this.express.use(express.urlencoded({ extended: false }));
     }
 
     private routes(): void {
@@ -45,6 +44,7 @@ class App {
         });
         
         this.express.put('/api/user', (req, res) => {
+          console.log(req.body);
             this.userController.updateUser(req.body.user).then(data => res.json(data));
         });
         
@@ -53,16 +53,16 @@ class App {
         });
 
         this.express.get("/", (req, res, next) => {
-            res.send("Typescript App works!!");
+            res.send("You have reached ArtoriasCore. Did you mean to come here?");
         });
 
         // swagger docs
-        //this.express.use('/api/docs', swaggerUi.serve,
+        // this.express.use('/api/docs', swaggerUi.serve,
         //    swaggerUi.setup(this.swaggerDocument, null, null, this.customCss));
 
         // handle undefined routes
         this.express.use("*", (req, res, next) => {
-            res.send("Make sure url is correct!!!");
+            res.send("Are you sure you have the right url? Try again!");
         });
     }
 }

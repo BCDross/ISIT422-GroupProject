@@ -3,4 +3,4 @@
   "watch": ["./"],
   "exec": "npm start",
   "ext": "ts"
-}nom
+}
