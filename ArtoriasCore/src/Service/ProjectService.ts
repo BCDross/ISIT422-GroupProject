@@ -1,27 +1,27 @@
-import { UserRepository } from '../Repository/UserRepository';
+import { ProjectRepository } from '../Repository/ProjectRepository';
 
-export class UserService {
+export class ProjectService {
 
-    private userRepository: UserRepository;
+    private projectRepository: ProjectRepository;
 
     constructor() {
-        this.userRepository = new UserRepository();
+        this.projectRepository = new ProjectRepository();
     }
 
-    async getUsers() {
-        return await this.userRepository.getUsers();
+    async getProjects() {
+        return await this.projectRepository.getProjects();
     }
 
-    async createUser(user) {
-        return await this.userRepository.createUser(user);
+    async createProject(project: any) {
+        return await this.projectRepository.createProject(project);
     }
 
-    async updateUser(user) {
-        return await this.userRepository.updateUser(user);
+    async updateProject(project: any) {
+        return await this.projectRepository.updateProject(project);
     }
 
-    async deleteUser(userId) {
-        return await this.userRepository.deleteUser(userId);
+    async deleteProject(projectId: any) {
+        return await this.projectRepository.deleteProject(projectId);
     }
 
 }
