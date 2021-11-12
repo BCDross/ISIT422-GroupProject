@@ -1,33 +1,33 @@
 import { APILogger } from '../Logger/apiLogger';
-import { UserService } from '../Service/UserService';
+import { ItemService } from '../Service/ItemService';
 
-export class UserController {
+export class ItemController {
 
-    private userService: UserService;
+    private itemService: ItemService;
     private logger: APILogger;
 
     constructor() {
-        this.userService = new UserService();
+        this.itemService = new ItemService();
         this.logger = new APILogger()
     }
 
-    async getUsers() {
-        this.logger.info('Controller: getUsers', null)
-        return await this.userService.getUsers();
+    async getItems() {
+        this.logger.info('Controller: getItems', null)
+        return await this.itemService.getItems();
     }
 
-    async createUser(user) {
-        this.logger.info('Controller: createUser', user);
-        return await this.userService.createUser(user);
+    async createItem(item: any) {
+        this.logger.info('Controller: createItem', item);
+        return await this.itemService.createItem(item);
     }
 
-    async updateUser(user) {
-        this.logger.info('Controller: updateUser', user);
-        return await this.userService.updateUser(user);
+    async updateItem(item: any) {
+        this.logger.info('Controller: updateItem', item);
+        return await this.itemService.updateItem(item);
     }
 
-    async deleteUser(userId) {
-        this.logger.info('Controller: deleteUser', userId);
-        return await this.userService.deleteUser(userId);
+    async deleteItem(itemId: any) {
+        this.logger.info('Controller: deleteItem', itemId);
+        return await this.itemService.deleteItem(itemId);
     }
 }

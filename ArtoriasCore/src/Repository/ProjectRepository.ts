@@ -1,8 +1,8 @@
 import { connect, disconnect } from "../Config/db.config";
-import { UserModel } from '../Models/UserModel';
+import { ProjectModel } from '../Models/ProjectModel';
 import { APILogger } from '../Logger/apiLogger';
 
-export class UserRepository {
+export class ProjectRepository {
 
     private logger: APILogger;
 
@@ -11,36 +11,36 @@ export class UserRepository {
         this.logger = new APILogger()
     }
 
-    async getUsers() {
-        const users = await UserModel.find({});
-        console.log('users:::', users);
-        return users;
+    async getProjects() {
+        const projects = await ProjectModel.find({});
+        console.log('projects:::', projects);
+        return projects;
     }
 
-    async createUser(user) {
+    async createProject(project: any) {
         let data = {};
         try {
-            data = await UserModel.create(user);
+            data = await ProjectModel.create(project);
         } catch(err) {
             this.logger.error('Error::' + err);
         }
         return data;
     }
 
-    async updateUser(user) {
+    async updateProject(project: any) {
         let data = {};
         try {
-            data = await UserModel.updateOne(user);
+            data = await ProjectModel.updateOne(project);
         } catch(err) {
             this.logger.error('Error::' + err);
         }
         return data;
     }
 
-    async deleteUser(userId) {
+    async deleteProject(projectId: any) {
         let data: any = {};
         try {
-            data = await UserModel.deleteOne({_id : userId});
+            data = await ProjectModel.deleteOne({_id : projectId});
         } catch(err) {
             this.logger.error('Error::' + err);
         }

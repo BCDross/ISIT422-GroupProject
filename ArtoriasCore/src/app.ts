@@ -1,6 +1,8 @@
 import express = require('express');
 import { APILogger } from "./Logger/apiLogger";
 import { UserController } from "./Controllers/UserController";
+import { ProjectController } from "./Controllers/ProjectController";
+import { ItemController } from "./Controllers/ItemController";
 import * as swaggerUi from 'swagger-ui-express';
 import fs = require('fs');
 
@@ -9,6 +11,8 @@ class App {
     public express: express.Application;
     public logger: APILogger;
     public userController: UserController;
+    public projectController: ProjectController;
+    public itemController: ItemController;
 
     /* Swagger files start */
     private swaggerFile: any = (process.cwd()+"/src/Swagger/swagger.json");
@@ -24,6 +28,8 @@ class App {
         this.routes();
         this.logger = new APILogger();
         this.userController = new UserController();
+        this.projectController = new ProjectController();
+        this.itemController = new ItemController();
     }
 
     // Configure Express middleware.
@@ -34,6 +40,7 @@ class App {
 
     private routes(): void {
 
+        // User Routes
         this.express.get('/api/users', (req, res) => {
             this.userController.getUsers().then(data => res.json(data));
         });
@@ -52,15 +59,53 @@ class App {
             this.userController.deleteUser(req.params.id).then(data => res.json(data));
         });
 
-        this.express.get("/", (req, res, next) => {
-            res.send("You have reached ArtoriasCore. Did you mean to come here?");
+        // Project Routes
+        this.express.get('/api/projects', (req, res) => {
+            this.projectController.getProjects().then(data => res.json(data));
+        });
+        
+        this.express.post('/api/project', (req, res) => {
+            console.log(req.body);
+            this.projectController.createProject(req.body.user).then(data => res.json(data));
+        });
+        
+        this.express.put('/api/project', (req, res) => {
+          console.log(req.body);
+            this.projectController.updateProject(req.body.user).then(data => res.json(data));
+        });
+        
+        this.express.delete('/api/project/:id', (req, res) => {
+            this.projectController.deleteProject(req.params.id).then(data => res.json(data));
         });
 
+        // Item Routes
+        this.express.get('/api/items', (req, res) => {
+            this.itemController.getItems().then(data => res.json(data));
+        });
+        
+        this.express.post('/api/item', (req, res) => {
+            console.log(req.body);
+            this.itemController.createItem(req.body.user).then(data => res.json(data));
+        });
+        
+        this.express.put('/api/item', (req, res) => {
+          console.log(req.body);
+            this.itemController.updateItem(req.body.user).then(data => res.json(data));
+        });
+        
+        this.express.delete('/api/item/:id', (req, res) => {
+            this.itemController.deleteItem(req.params.id).then(data => res.json(data));
+        });
+
+        
         // swagger docs
         // this.express.use('/api/docs', swaggerUi.serve,
         //    swaggerUi.setup(this.swaggerDocument, null, null, this.customCss));
 
         // handle undefined routes
+        //
+
+        // All non-api urls.
         this.express.use("*", (req, res, next) => {
             res.send("Are you sure you have the right url? Try again!");
         });

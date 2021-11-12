@@ -2,6 +2,12 @@
   "name": "artoriascore",
   "version": "1.0.0",
   "description": "",
+  "nodemonConfig": {
+    "ignore": [".git", "node_modules"],
+    "watch": ["./"],
+    "exec": "npm start",
+    "ext": "ts"
+  },
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
