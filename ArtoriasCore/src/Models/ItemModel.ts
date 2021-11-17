@@ -8,9 +8,9 @@ export interface IItem extends Document {
     priority: Number;
     description: String;
     type: String;
-    creator: String;
-    parent?: ObjectId;
-    children?: ObjectId[];
+    creatorId: String;
+    projectId: String;
+    parentId?: String;
     owner?: String;
     createDate: Date;
     modifiedDate: Date;
@@ -22,10 +22,10 @@ const ItemSchema: Schema = new Schema({
     priority: { type: String, required: true },
     description: { type: String, required: true },
     type: { type: String, required: true },
-    createdBy: { type: String, required: false },
-    parent: Schema.Types.ObjectId,
-    children: [Schema.Types.ObjectId],
-    owner: { type: String },
+    creatorId: { type: String, required: true },
+    projectId: { type: String, required: true },
+    parentId: { type: String, required: false },
+    owner: { type: String, required: false },
     createDate: { type: Date, default: Date.now },
     modifiedDate: { type: Date, default: Date.now }
 });

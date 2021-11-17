@@ -12,6 +12,10 @@ export class ItemService {
         return await this.itemRepository.getItems();
     }
 
+    async getItemsByProjectId(projectId: any) {
+        return await this.itemRepository.getItemsByProjectId(projectId);
+    }
+
     async createItem(item: any) {
         return await this.itemRepository.createItem(item);
     }

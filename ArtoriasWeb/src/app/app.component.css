@@ -299,3 +299,6 @@ svg#clouds {
   width: auto;
   margin: 10px;
 }
+nav{
+  float: right;
+}

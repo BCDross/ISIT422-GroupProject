@@ -16,6 +16,11 @@ export class ItemController {
         return await this.itemService.getItems();
     }
 
+    async getItemsByProjectId(projectId: any) {
+        this.logger.info('Controller: getItemsByProjectID', null)
+        return await this.itemService.getItemsByProjectId(projectId);
+    }
+
     async createItem(item: any) {
         this.logger.info('Controller: createItem', item);
         return await this.itemService.createItem(item);
