@@ -26,6 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatInputModule,
     MatTableModule,
     MatButtonModule,
+    MatIconModule,
     MatSelectModule,
     MatDialogModule,
     MatSortModule,
