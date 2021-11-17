@@ -1,33 +1,33 @@
 import { APILogger } from '../Logger/apiLogger';
-import { UserService } from '../Service/UserService';
+import { ProjectService } from '../Service/ProjectService';
 
-export class UserController {
+export class ProjectController {
 
-    private userService: UserService;
+    private projectService: ProjectService;
     private logger: APILogger;
 
     constructor() {
-        this.userService = new UserService();
+        this.projectService = new ProjectService();
         this.logger = new APILogger()
     }
 
-    async getUsers() {
-        this.logger.info('Controller: getUsers', null)
-        return await this.userService.getUsers();
+    async getProjects() {
+        this.logger.info('Controller: getProjects', null)
+        return await this.projectService.getProjects();
     }
 
-    async createUser(user) {
-        this.logger.info('Controller: createUser', user);
-        return await this.userService.createUser(user);
+    async createProject(project: any) {
+        this.logger.info('Controller: createProject', project);
+        return await this.projectService.createProject(project);
     }
 
-    async updateUser(user) {
-        this.logger.info('Controller: updateUser', user);
-        return await this.userService.updateUser(user);
+    async updateProject(project: any) {
+        this.logger.info('Controller: updateProject', project);
+        return await this.projectService.updateProject(project);
     }
 
-    async deleteUser(userId) {
-        this.logger.info('Controller: deleteUser', userId);
-        return await this.userService.deleteUser(userId);
+    async deleteProject(projectId: any) {
+        this.logger.info('Controller: deleteProject', projectId);
+        return await this.projectService.deleteProject(projectId);
     }
 }

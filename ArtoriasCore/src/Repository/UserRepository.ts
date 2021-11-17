@@ -13,8 +13,28 @@ export class UserRepository {
 
     async getUsers() {
         const users = await UserModel.find({});
-        console.log('users:::', users);
+        console.log('users:', users);
         return users;
+    }
+
+    async getUserByID(userId: any) {
+        let user;
+        try {
+            user = await UserModel.findById({_id: userId});
+        } catch(err) {
+            this.logger.error('Error:' + err);
+        }
+        return user;
+    }
+
+    async getUserByEmail(email: any) {
+        let user;
+        try { 
+            user = await UserModel.findOne({email: email});
+        } catch(err) {
+            this.logger.error('Error:' + err);
+        }
+        return user;
     }
 
     async createUser(user: any) {
@@ -22,12 +42,22 @@ export class UserRepository {
         try {
             data = await UserModel.create(user);
         } catch(err) {
-            this.logger.error('Error::' + err);
+            this.logger.error('Error:' + err);
         }
         return data;
     }
 
     async updateUser(user: any) {
+        let data = {};
+        try {
+            data = await UserModel.updateOne(user);
+        } catch(err) {
+            this.logger.error('Error:' + err);
+        }
+        return data;
+    }
+
+    async patchUser(user: any) {
         let data = {};
         try {
             data = await UserModel.updateOne(user);

@@ -1,8 +1,8 @@
 import { connect, disconnect } from "../Config/db.config";
-import { UserModel } from '../Models/UserModel';
+import { ItemModel } from '../Models/ItemModel';
 import { APILogger } from '../Logger/apiLogger';
 
-export class UserRepository {
+export class ItemRepository {
 
     private logger: APILogger;
 
@@ -11,36 +11,46 @@ export class UserRepository {
         this.logger = new APILogger()
     }
 
-    async getUsers() {
-        const users = await UserModel.find({});
-        console.log('users:::', users);
-        return users;
+    async getItems() {
+        const items = await ItemModel.find({});
+        console.log('items:::', items);
+        return items;
     }
 
-    async createUser(user) {
+    async getItemsByProjectId(projectId: any) {
+        let items;
+        try {
+            items = await ItemModel.find({projectId: projectId});
+        } catch(err) {
+            this.logger.error('Error:' + err);
+        }
+        return items;
+    }
+
+    async createItem(item: any) {
         let data = {};
         try {
-            data = await UserModel.create(user);
+            data = await ItemModel.create(item);
         } catch(err) {
             this.logger.error('Error::' + err);
         }
         return data;
     }
 
-    async updateUser(user) {
+    async updateItem(item: any) {
         let data = {};
         try {
-            data = await UserModel.updateOne(user);
+            data = await ItemModel.updateOne(item);
         } catch(err) {
             this.logger.error('Error::' + err);
         }
         return data;
     }
 
-    async deleteUser(userId) {
+    async deleteItem(itemId: any) {
         let data: any = {};
         try {
-            data = await UserModel.deleteOne({_id : userId});
+            data = await ItemModel.deleteOne({_id : itemId});
         } catch(err) {
             this.logger.error('Error::' + err);
         }

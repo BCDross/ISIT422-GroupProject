@@ -1,29 +1,31 @@
-import Mongoose = require('mongoose');
-const env = require('dotenv').config()
+import dotenv = require('dotenv');
+import mongoose = require('mongoose');
 
-let database: Mongoose.Connection;
+dotenv.config();
+let database: mongoose.Connection;
 
 export const connect = () => {
 
-    let url = env.MONGODB_URL;
-    console.log("from connect: process.env.MONGODB_URL :::",process.env.MONGODB_URL)
+    const url: string = (process.env.MONGODB_URL as string);
+    // Print the url to the console to check the value is there and correct.
+    //console.log("from connect: process.env.MONGODB_URL :::",url);
 
     if (database) {
         return;
     }
     
     const options = {
-      useNewUrlParser: "true",
-      useFindAndModify: "false",
-      useUnifiedTopology: "true",
-      useCreateIndex: "true",
-      maxPoolSize: 100,
-      reconnectTries: Number.MAX_VALUE
-  }
+        maxPoolSize: 100,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        //useFindAndModify: true,
+        //useCreateIndex: true,
+        //reconnectTries: Number.MAX_VALUE
+    }
 
-    Mongoose.connect(url, options);
+    mongoose.connect(url, options);
     
-    database = Mongoose.connection;
+    database = mongoose.connection;
 
     database.once("open", async () => {
         console.log("Connected to database");
@@ -41,7 +43,7 @@ export const disconnect = () => {
       return;
     }
     
-    Mongoose.disconnect();
+    mongoose.disconnect();
 
     database.once("close", async () => {
         console.log("Disconnected from database");

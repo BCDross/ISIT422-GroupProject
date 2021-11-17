@@ -1,25 +1,33 @@
-import { model, Schema, Model, Document } from 'mongoose';
+import { model, Schema, Model, Document, ObjectId } from 'mongoose';
+import { ItemController } from '../Controllers/ItemController';
+import { UserModel } from './UserModel'
 
-export interface IUser extends Document {
-    first_name: string;
-    last_name: string;
-    email: string;
-    password: string;
-    createDate: string;
-    updatedDate: string;
-    createdBy: string;
-    updatedBy: string;
+export interface IItem extends Document {
+    name: String;
+    status: String;
+    priority: Number;
+    description: String;
+    type: String;
+    creatorId: String;
+    projectId: String;
+    parentId?: String;
+    owner?: String;
+    createDate: Date;
+    modifiedDate: Date;
 }
 
-const UserSchema: Schema = new Schema({
-    first_name: { type: String, required: true },
-    last_name: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
+const ItemSchema: Schema = new Schema({
+    name: { type: String, required: true },
+    status: { type: String, required: true },
+    priority: { type: String, required: true },
+    description: { type: String, required: true },
+    type: { type: String, required: true },
+    creatorId: { type: String, required: true },
+    projectId: { type: String, required: true },
+    parentId: { type: String, required: false },
+    owner: { type: String, required: false },
     createDate: { type: Date, default: Date.now },
-    updatedDate: { type: Date, default: Date.now },
-    createdBy: { type: String, required: false },
-    updatedBy: { type: String, required: false }
+    modifiedDate: { type: Date, default: Date.now }
 });
 
-export const UserModel: Model<IUser> = model<IUser>('users', UserSchema);
+export const ItemModel: Model<IItem> = model<IItem>('items', ItemSchema);

@@ -16,6 +16,16 @@ export class UserController {
         return await this.userService.getUsers();
     }
 
+    async getUserByID(userId: any) {
+        this.logger.info('Controller: getUserByID', userId)
+        return await this.userService.getUserByID(userId);
+    }
+
+    async getUserByEmail(email: any) {
+        this.logger.info('Controller: getUserByEmail', email)
+        return await this.userService.getUserByEmail(email);
+    }
+
     async createUser(user: any) {
         this.logger.info('Controller: createUser', user);
         return await this.userService.createUser(user);
@@ -24,6 +34,11 @@ export class UserController {
     async updateUser(user: any) {
         this.logger.info('Controller: updateUser', user);
         return await this.userService.updateUser(user);
+    }
+
+    async patchUser(user: any) {
+        this.logger.info('Controller: patchUser', user);
+        return await this.userService.patchUser(user);
     }
 
     async deleteUser(userId: any) {

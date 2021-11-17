@@ -19,8 +19,6 @@ export class NewItemComponent implements OnInit {
     type: new FormControl()
   });
 
-
-
   idSeed = 0;//VERY temporary solution for generating ID
   
   //                                                                                         data type is a placeholder, not sure if I wanna use it
@@ -39,7 +37,6 @@ export class NewItemComponent implements OnInit {
       this.itemForm.get("description")?.value);
     console.log("Item submitted");
     this.dataService.addItem(newItem);
-
   }
 
   onNoClick(): void {
