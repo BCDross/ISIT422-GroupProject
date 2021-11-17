@@ -1,21 +1,31 @@
 <link rel="stylesheet" href="app.component.css">
 
 <nav mat-tab-nav-bar >
-    <a mat-tab-link routerLink="/projects" routerLinkActive="active"> Projects Page </a>
-    <a mat-tab-link routerLink="/project" routerLinkActive="active"> Project Page </a>
-    <a mat-tab-link routerLink="/list" routerLinkActive="active"> List Page </a>
-    <a mat-tab-link routerLink="/users" routerLinkActive="active"> Users Page </a>
-    <a mat-tab-link routerLink="/admin" routerLinkActive="active"> Admin Page </a>
+    <button mat-fab color="primary" routerLink="/users" routerLinkActive="active">
+        <mat-icon>settings</mat-icon>
+    </button>
 
     <!--<a mat-tab-link disabled>Disabled Link</a>-->
-  </nav>
+</nav>
 
-<mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>Sidnav content
+<mat-drawer-container class="main-container">
+    <mat-drawer mode="side" opened>Menu
         <mat-list role="list">
-            <mat-list-item role="listitem">Item 1</mat-list-item>
-            <mat-list-item role="listitem">Item 2</mat-list-item>
-            <mat-list-item role="listitem">Item 3</mat-list-item>
+            <mat-list-item role="listitem">    
+                <button routerLink="/" routerLinkActive="active"> Home Page </button>
+            </mat-list-item>
+            <mat-list-item role="listitem">    
+                <button routerLink="/projects" routerLinkActive="active"> Projects Page </button>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button routerLink="/project" routerLinkActive="active">Project Page</button>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button routerLink="/list" routerLinkActive="active"> List Page </button>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button routerLink="/admin" routerLinkActive="active"> Admin Page </button>
+            </mat-list-item>
           </mat-list>
     </mat-drawer>
     <mat-drawer-content>

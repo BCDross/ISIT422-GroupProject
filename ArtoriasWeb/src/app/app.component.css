@@ -294,8 +294,11 @@ svg#clouds {
   margin-top: 8px;
   margin-right: 8px;
 }
-.example-container {
+.main-container {
   height: 100%;
   width: auto;
   margin: 10px;
+}
+nav{
+  float: right;
 }
