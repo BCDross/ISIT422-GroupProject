@@ -17,6 +17,16 @@ export class ItemRepository {
         return items;
     }
 
+    async getItemsByProjectId(projectId: any) {
+        let items;
+        try {
+            items = await ItemModel.find({projectId: projectId});
+        } catch(err) {
+            this.logger.error('Error:' + err);
+        }
+        return items;
+    }
+
     async createItem(item: any) {
         let data = {};
         try {

@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "nodemonConfig": {
-    "ignore": [".git", "node_modules"],
-    "watch": ["./"],
+    "ignore": [
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "./"
+    ],
     "exec": "npm start",
     "ext": "ts"
   },
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/nodemon/bin/nodemon.js",
+    "dev": "nodemon index.ts",
     "start": "ts-node index.ts"
   },
   "author": "Carl Nelson, Devon Rice, and Darren Ross",

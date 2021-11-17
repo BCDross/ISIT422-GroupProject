@@ -44,6 +44,16 @@ class App {
         this.express.get('/api/users', (req, res) => {
             this.userController.getUsers().then(data => res.json(data));
         });
+
+        // this.express.get('/api/user/:id', (req, res) => {
+        //     console.log(req.params);
+        //     this.userController.getUserByID(req.params.id).then(data => res.json(data));
+        // });
+
+        this.express.get('/api/user/:email', (req, res) => {
+            console.log(req.params);
+            this.userController.getUserByEmail(req.params.email).then(data => res.json(data));
+        });
         
         this.express.post('/api/user', (req, res) => {
             console.log(req.body);
@@ -64,6 +74,11 @@ class App {
             this.projectController.getProjects().then(data => res.json(data));
         });
         
+        // this.express.get('/api/project/:id', (req, res) => {
+        //     console.log(req.params);
+        //     this.projectController.getProjectByProjectID(req.params.id).then(data => res.json(data));
+        // });
+
         this.express.post('/api/project', (req, res) => {
             console.log(req.body);
             this.projectController.createProject(req.body.user).then(data => res.json(data));
@@ -81,6 +96,11 @@ class App {
         // Item Routes
         this.express.get('/api/items', (req, res) => {
             this.itemController.getItems().then(data => res.json(data));
+        });
+
+        this.express.get('/api/item/:id', (req, res) => {
+            console.log(req.params);
+            this.itemController.getItemsByProjectId(req.params.id).then(data => res.json(data));
         });
         
         this.express.post('/api/item', (req, res) => {
