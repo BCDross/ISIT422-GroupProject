@@ -14,7 +14,6 @@ export interface IItem extends Document {
     owner?: String;
     createDate: Date;
     modifiedDate: Date;
-    projectId: String;
 }
 
 const ItemSchema: Schema = new Schema({
