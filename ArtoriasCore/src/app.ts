@@ -54,6 +54,12 @@ class App {
           console.log(req.body);
             this.userController.updateUser(req.body.user).then(data => res.json(data));
         });
+
+        // Patch api is untested and needs to be debugged.
+        this.express.patch('/api/user/:id', (req, res) => {
+            console.log(req.body);
+            this.userController.patchUser(req.body.user).then(data => res.json(data));
+        });
         
         this.express.delete('/api/user/:id', (req, res) => {
             this.userController.deleteUser(req.params.id).then(data => res.json(data));

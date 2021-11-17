@@ -37,6 +37,16 @@ export class UserRepository {
         return data;
     }
 
+    async patchUser(user: any) {
+        let data = {};
+        try {
+            data = await UserModel.updateOne(user);
+        } catch(err) {
+            this.logger.error('Error::' + err);
+        }
+        return data;
+    }
+
     async deleteUser(userId: any) {
         let data: any = {};
         try {
