@@ -1,6 +1,6 @@
 
 export class Item{
-    id: string;
+    _id: string;
     name: string;
     status: string; //new, open, closed, etc. Whatever column it goes in.
     priority: number; // user-defined priority
@@ -12,9 +12,12 @@ export class Item{
     //parent?: Item;
     //children?: Item[];
     owner?: string;
+    createDate?: string;
+    modifiedDate?: string;
+    __v?: number;
 
     constructor(id:string, name: string, status: string, priority: number, type: string, projectID: string, creatorID: string, parentID?: string, description?: string, owner?: string, parent?: Item, children?: Item[]){
-        this.id = id;
+        this._id = id;
         this.name = name;
         this.status = status;
         this.priority = priority;

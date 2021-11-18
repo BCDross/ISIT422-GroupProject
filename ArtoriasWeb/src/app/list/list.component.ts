@@ -4,6 +4,7 @@ import { Item } from '../Objects/item';
 import {MatDialog} from '@angular/material/dialog';
 import { NewItemComponent } from '../new-item/new-item.component';
 import { MatTableDataSource } from '@angular/material/table';
+import { User } from '../Objects/user';
 
 @Component({
   selector: 'app-list',
@@ -22,8 +23,8 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.items = this.dataService.getItems();
-    this.dataSource.data = this.items;
+    this.dataService.getItems().subscribe(response => this.items = (response as Item[]));
+    this.dataService.getItems().subscribe(response => this.dataSource.data = (response as Item[]));
     console.log("ngOnInit called");
      //temp solution
   }
@@ -39,6 +40,12 @@ export class ListComponent implements OnInit {
       console.log(result); //testing
       this.dataSource.data = this.items;
     });
+  }
+
+  //test method
+  addUser() {
+    let newUser = new User("fakeID", "Test", "Seven", "Test.Seven@bellevuecollege.edu", "422cdd");
+    this.dataService.addUser(newUser).subscribe(user => console.log(user));
   }
 
 }

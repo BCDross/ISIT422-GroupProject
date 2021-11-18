@@ -19,7 +19,7 @@ export class NewItemComponent implements OnInit {
     type: new FormControl()
   });
 
-  idSeed = 0;//VERY temporary solution for generating ID
+  idSeed = "0";//VERY temporary solution for generating ID
   
   //                                                                                         data type is a placeholder, not sure if I wanna use it
   constructor(private dataService: DataService,public dialogRef: MatDialogRef<NewItemComponent>,  @Inject(MAT_DIALOG_DATA) public data: Item,){} 
@@ -28,7 +28,7 @@ export class NewItemComponent implements OnInit {
   }
 
   onSubmit() {
-    let newItem:Item = new Item(this.idSeed+1,
+    let newItem:Item = new Item(this.idSeed+="1",
       this.itemForm.get("name")?.value,
       this.itemForm.get("status")?.value,
       this.itemForm.get("priority")?.value,
@@ -36,7 +36,7 @@ export class NewItemComponent implements OnInit {
       "", //creator, but it's nothing until users are set up
       this.itemForm.get("description")?.value);
     console.log("Item submitted");
-    this.dataService.addItem(newItem);
+    this.dataService.addItem(newItem).subscribe(item => this.data = (item as Item));
   }
 
   onNoClick(): void {

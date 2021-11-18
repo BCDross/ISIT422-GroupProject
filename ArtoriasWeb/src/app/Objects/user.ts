@@ -1,16 +1,16 @@
 import {Project} from './project';
 
 export class User {
-    id: number;
+    _id: string;
     firstName: string;
     lastName: string;
-    title: string;
+    title?: string;
     email: string;
     password: string;
     projects: Project[];
 
-    constructor(id: number, firstName: string, lastName:string, title:string, email:string, password:string, projects?: Project[]){
-        this.id = id;
+    constructor(id: string, firstName: string, lastName:string, email:string, password:string,title?:string, projects?: Project[]){
+        this._id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.title = title;
