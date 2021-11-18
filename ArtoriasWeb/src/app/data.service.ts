@@ -19,7 +19,7 @@ export class DataService {
     this.items = [];
   }
 
-  getItems() {
+  getAllItems() {
     console.log("Returning items.");
     return this.http.get("http://localhost:8080/api/items");
   }
@@ -32,17 +32,14 @@ export class DataService {
         priority: newItem.priority,
         description: newItem.description,
         type: newItem.type,
-        creatorID: "fakeID",
-        projectID: "fakeID",
-        parentID: newItem.parentID,
+        creatorId: "fakeID",
+        projectId: "fakeID",
+        parentId: newItem.parentID,
         owner: newItem.owner
       }
     }
 
-    let response = this.http.post("http://localhost:8080/api/item", transferObject);
-    response.subscribe(response => console.log(response));
-
-    return response;
+    return this.http.post("http://localhost:8080/api/item", transferObject);
   }
 
   addUser(newUser: User) {

@@ -33,7 +33,7 @@ export class NewItemComponent implements OnInit {
       this.itemForm.get("status")?.value,
       this.itemForm.get("priority")?.value,
       this.itemForm.get("type")?.value,
-      "", //creator, but it's nothing until users are set up
+      "fakeID", //creator, but it's nothing until users are set up
       this.itemForm.get("description")?.value);
     console.log("Item submitted");
     this.dataService.addItem(newItem).subscribe(item => this.data = (item as Item));

@@ -23,8 +23,8 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataService.getItems().subscribe(response => this.items = (response as Item[]));
-    this.dataService.getItems().subscribe(response => this.dataSource.data = (response as Item[]));
+    this.dataService.getAllItems().subscribe(response => this.items = (response as Item[]));
+    this.dataService.getAllItems().subscribe(response => this.dataSource.data = (response as Item[]));
     console.log("ngOnInit called");
      //temp solution
   }
@@ -38,7 +38,8 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result); //testing
-      this.dataSource.data = this.items;
+      this.dataService.getAllItems().subscribe(response => this.items = (response as Item[]));
+      this.dataService.getAllItems().subscribe(response => this.dataSource.data = (response as Item[]));
     });
   }
 

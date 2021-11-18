@@ -30,7 +30,7 @@ export class Item{
             this.description = description;
         } 
         else {
-            this.description = "";
+            this.description = " ";
         }
 
     }
