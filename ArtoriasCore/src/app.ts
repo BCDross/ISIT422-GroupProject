@@ -5,6 +5,7 @@ import { ProjectController } from "./Controllers/ProjectController";
 import { ItemController } from "./Controllers/ItemController";
 import * as swaggerUi from 'swagger-ui-express';
 import fs = require('fs');
+import cors from 'cors';
 
 class App {
 
@@ -21,7 +22,6 @@ class App {
     private swaggerDocument = JSON.parse(this.swaggerData);
     /* Swagger files end */
 
-
     constructor() {
         this.express = express();
         this.middleware();
@@ -34,6 +34,21 @@ class App {
 
     // Configure Express middleware.
     private middleware(): void {
+        const options: cors.CorsOptions = {
+            allowedHeaders: [
+                'Origin',
+                'X-Requested-With',
+                'Content-Type',
+                'Accept',
+                'X-Access-Token',
+            ],
+            credentials: true,
+            methods: "GET, PUT, PATCH, POST, DELETE",
+            origin: 'http://localhost:4200',
+            preflightContinue: false,
+        };
+
+        this.express.use(cors(options));
         this.express.use(express.json());
         this.express.use(express.urlencoded({ extended: false }));
     }
