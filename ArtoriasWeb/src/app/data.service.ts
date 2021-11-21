@@ -61,6 +61,30 @@ export class DataService {
     // ); how the fuck does this thing work actually
   }
 
+  getUserByEmail(email: string) {
+    let params: HttpParams = new HttpParams();
+    params.append("email",email);
+
+    let response = this.http.get("http://localhost:8080/api/user",{params});
+
+    response.subscribe(user => this.user = (user as User));
+
+    return response;
+  }
+
+  addProject(newProject: Project) {
+    let transferObject = {
+      user: {
+        name: newProject.name,
+        creator: newProject.creator,
+        items: newProject.items
+      }
+    };
+    let response = this.http.post("http://localhost:8080/api/project", transferObject);
+
+    response.subscribe(project => this.projects.push((project as Project)));
+  }
+
   // handleError(method: string, json: object): ObservableInput<any> {
 
   // }
