@@ -77,8 +77,7 @@ export class DataService {
     let transferObject = {
       project: {
         name: newProject.name,
-        creator: newProject.creator,
-        items: newProject.items
+        creator: newProject.creator
       }
     };
     let response = this.http.post("http://localhost:8080/api/project", transferObject);
