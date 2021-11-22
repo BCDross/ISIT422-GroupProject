@@ -85,6 +85,13 @@ export class DataService {
     response.subscribe(project => this.projects.push((project as Project)));
   }
 
+  updateItem(updatedItem: Item) {
+    let transferObject = {
+      user: updatedItem
+    };
+    this.http.put("http://localhost:8080/api/item", transferObject).subscribe(item => console.log(item));
+  }
+
   // handleError(method: string, json: object): ObservableInput<any> {
 
   // }

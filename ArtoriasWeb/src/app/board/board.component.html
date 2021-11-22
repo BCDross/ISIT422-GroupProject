@@ -1,0 +1,76 @@
+<button mat-raised-button (click)="openDialog()" color="primary">New Item</button>
+<br>
+
+<div class="column-container">
+    <h2>New</h2>
+  
+    <div
+      cdkDropList
+      #newList="cdkDropList"
+      [cdkDropListData]="newItems"
+      [cdkDropListConnectedTo]="[activeList, resolvedList, closedList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event,'New')">
+        <div class="example-box" *ngFor="let item of newItems" cdkDrag>
+          Name: {{item.name}} <br>
+          Status: {{item.status}} <br>
+          Priority: {{item.priority}} <br>
+          Type: {{item.type}}
+        </div>
+    </div>
+  </div>
+  
+  <div class="column-container">
+    <h2>Active</h2>
+  
+    <div
+      cdkDropList
+      #activeList="cdkDropList"
+      [cdkDropListData]="activeItems"
+      [cdkDropListConnectedTo]="[newList, resolvedList, closedList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event,'Active')">
+      <div class="example-box" *ngFor="let item of activeItems" cdkDrag>
+        Name: {{item.name}} <br>
+        Status: {{item.status}} <br>
+        Priority: {{item.priority}} <br>
+        Type: {{item.type}}
+      </div>
+    </div>
+    </div>
+
+    <div class="column-container">
+        <h2>Resolved</h2>
+    <div
+        cdkDropList
+        #resolvedList="cdkDropList"
+        [cdkDropListData]="resolvedItems"
+        [cdkDropListConnectedTo]="[newList, activeList, closedList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event,'Resolved')">
+        <div class="example-box" *ngFor="let item of resolvedItems" cdkDrag>
+            Name: {{item.name}} <br>
+            Status: {{item.status}} <br>
+            Priority: {{item.priority}} <br>
+            Type: {{item.type}}
+        </div>
+    </div>
+  </div>
+
+  <div class="column-container">
+    <h2>Closed</h2>
+  <div
+  cdkDropList
+  #closedList="cdkDropList"
+  [cdkDropListData]="closedItems"
+  [cdkDropListConnectedTo]="[newList, activeList, resolvedList]"
+  class="example-list"
+  (cdkDropListDropped)="drop($event,'Closed')">
+  <div class="example-box" *ngFor="let item of closedItems" cdkDrag>
+    Name: {{item.name}} <br>
+    Status: {{item.status}} <br>
+    Priority: {{item.priority}} <br>
+    Type: {{item.type}}
+  </div>
+</div>
+  </div>
