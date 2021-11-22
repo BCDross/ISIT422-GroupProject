@@ -13,6 +13,7 @@ export class DataService {
   user?: User;
   items: Item[] = [];
   projects: Project[] = [];
+  currentProject?: Project;
   
 
   constructor(private http: HttpClient) { 
