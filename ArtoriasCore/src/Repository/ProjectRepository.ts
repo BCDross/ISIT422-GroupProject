@@ -17,6 +17,18 @@ export class ProjectRepository {
         return projects;
     }
 
+    async getProjectByProjectId(projectId: any) {
+        const project = await ProjectModel.find(projectId);
+        console.log('project:::', project);
+        return project;
+    }
+    
+    async getProjectsByCreatorId(creatorId: string) {
+        const projects = await ProjectModel.find({ creatorId: creatorId });
+        console.log('projects:::', projects);
+        return projects;
+    }
+
     async createProject(project: any) {
         let data = {};
         try {

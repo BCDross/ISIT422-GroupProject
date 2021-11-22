@@ -16,6 +16,16 @@ export class ProjectController {
         return await this.projectService.getProjects();
     }
 
+    async getProjectsByCreatorId(creatorId: string) {
+        this.logger.info('Controller: getProjectsByCreatorId', null)
+        return await this.projectService.getProjectsByCreatorId(creatorId);
+    }
+
+    async getProjectByProjectId(projectId: string) {
+        this.logger.info('Controller: getProjectByProjectId', null)
+        return await this.projectService.getProjectByProjectId(projectId);
+    }
+
     async createProject(project: any) {
         this.logger.info('Controller: createProject', project);
         return await this.projectService.createProject(project);
@@ -26,7 +36,7 @@ export class ProjectController {
         return await this.projectService.updateProject(project);
     }
 
-    async deleteProject(projectId: any) {
+    async deleteProject(projectId: string) {
         this.logger.info('Controller: deleteProject', projectId);
         return await this.projectService.deleteProject(projectId);
     }

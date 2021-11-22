@@ -17,16 +17,6 @@ export class UserRepository {
         return users;
     }
 
-    async getUserByID(userId: any) {
-        let user;
-        try {
-            user = await UserModel.findById({_id: userId});
-        } catch(err) {
-            this.logger.error('Error:' + err);
-        }
-        return user;
-    }
-
     async getUserByEmail(email: any) {
         let user;
         try { 

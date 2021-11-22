@@ -16,11 +16,6 @@ export class UserController {
         return await this.userService.getUsers();
     }
 
-    async getUserByID(userId: any) {
-        this.logger.info('Controller: getUserByID', userId)
-        return await this.userService.getUserByID(userId);
-    }
-
     async getUserByEmail(email: any) {
         this.logger.info('Controller: getUserByEmail', email)
         return await this.userService.getUserByEmail(email);

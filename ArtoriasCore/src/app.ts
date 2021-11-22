@@ -60,11 +60,7 @@ class App {
             this.userController.getUsers().then(data => res.json(data));
         });
 
-        // this.express.get('/api/user/:id', (req, res) => {
-        //     console.log(req.params);
-        //     this.userController.getUserByID(req.params.id).then(data => res.json(data));
-        // });
-
+        // Need to require both email and password field to be present to compare.
         this.express.get('/api/user/:email', (req, res) => {
             console.log(req.params);
             this.userController.getUserByEmail(req.params.email).then(data => res.json(data));
@@ -95,19 +91,24 @@ class App {
             this.projectController.getProjects().then(data => res.json(data));
         });
         
-        // this.express.get('/api/project/:id', (req, res) => {
-        //     console.log(req.params);
-        //     this.projectController.getProjectByProjectID(req.params.id).then(data => res.json(data));
-        // });
+        this.express.get('/api/projects/:creatorId', (req, res) => {
+            console.log(req.params);
+            this.projectController.getProjectsByCreatorId(req.params.creatorId).then(data => res.json(data));
+        });
+
+        this.express.get('/api/project/:projectId', (req, res) => {
+            console.log(req.params);
+            this.projectController.getProjectByProjectId(req.params.projectId).then(data => res.json(data));
+        });
 
         this.express.post('/api/project', (req, res) => {
             console.log(req.body);
-            this.projectController.createProject(req.body.user).then(data => res.json(data));
+            this.projectController.createProject(req.body.project).then(data => res.json(data));
         });
         
         this.express.put('/api/project', (req, res) => {
           console.log(req.body);
-            this.projectController.updateProject(req.body.user).then(data => res.json(data));
+            this.projectController.updateProject(req.body.project).then(data => res.json(data));
         });
         
         this.express.delete('/api/project/:id', (req, res) => {
@@ -119,19 +120,19 @@ class App {
             this.itemController.getItems().then(data => res.json(data));
         });
 
-        this.express.get('/api/item/:id', (req, res) => {
+        this.express.get('/api/items/:projectId', (req, res) => {
             console.log(req.params);
-            this.itemController.getItemsByProjectId(req.params.id).then(data => res.json(data));
+            this.itemController.getItemsByProjectId(req.params.projectId).then(data => res.json(data));
         });
         
         this.express.post('/api/item', (req, res) => {
             console.log(req.body);
-            this.itemController.createItem(req.body.user).then(data => res.json(data));
+            this.itemController.createItem(req.body.item).then(data => res.json(data));
         });
         
         this.express.put('/api/item', (req, res) => {
           console.log(req.body);
-            this.itemController.updateItem(req.body.user).then(data => res.json(data));
+            this.itemController.updateItem(req.body.item).then(data => res.json(data));
         });
         
         this.express.delete('/api/item/:id', (req, res) => {
