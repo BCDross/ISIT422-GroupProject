@@ -21,7 +21,7 @@ export class NewItemComponent implements OnInit {
 
   idSeed = "0";//VERY temporary solution for generating ID
   
-  //                                                                                         data type is a placeholder, not sure if I wanna use it
+  //data type is a placeholder, not sure if I wanna use it
   constructor(private dataService: DataService,public dialogRef: MatDialogRef<NewItemComponent>,  @Inject(MAT_DIALOG_DATA) public data: Item,){} 
 
   ngOnInit(): void {
