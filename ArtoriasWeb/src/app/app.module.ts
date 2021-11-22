@@ -30,6 +30,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSortModule } from '@angular/material/sort';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NewProjectComponent } from './new-project/new-project.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     BoardComponent,
     ProjectsComponent,
     AdminComponent,
-    NewItemComponent
+    NewItemComponent,
+    NewProjectComponent
   ],
   imports: [
     BrowserModule,
