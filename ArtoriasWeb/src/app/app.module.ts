@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { UsersComponent } from './users/users.component';
-import { ProjectComponent } from './project/project.component';
+import { BoardComponent } from './board/board.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AdminComponent } from './admin/admin.component';
 import { NewItemComponent } from './new-item/new-item.component';
@@ -29,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSortModule } from '@angular/material/sort';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { MatSortModule } from '@angular/material/sort';
     AppComponent,
     ListComponent,
     UsersComponent,
-    ProjectComponent,
+    BoardComponent,
     ProjectsComponent,
     AdminComponent,
     NewItemComponent
@@ -63,7 +64,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatIconModule,
     MatDialogModule,
     MatSortModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

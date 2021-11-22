@@ -38,8 +38,10 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result); //testing
-      this.dataService.getAllItems().subscribe(response => this.items = (response as Item[]));
-      this.dataService.getAllItems().subscribe(response => this.dataSource.data = (response as Item[]));
+      this.dataService.getAllItems().subscribe(response => {
+        this.items = (response as Item[]);
+        this.dataSource.data = (response as Item[]);
+      });
     });
   }
 
