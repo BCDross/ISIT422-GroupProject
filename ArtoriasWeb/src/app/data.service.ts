@@ -27,7 +27,7 @@ export class DataService {
 
   addItem(newItem: Item) {
     let transferObject = {
-      user: {
+      item: {
         name: newItem.name,
         status: newItem.status,
         priority: newItem.priority,
@@ -75,7 +75,7 @@ export class DataService {
 
   addProject(newProject: Project) {
     let transferObject = {
-      user: {
+      project: {
         name: newProject.name,
         creator: newProject.creator,
         items: newProject.items
@@ -86,9 +86,22 @@ export class DataService {
     response.subscribe(project => this.projects.push((project as Project)));
   }
 
+  getProjectsByUserId() {
+    if (this.user) {
+      let params: HttpParams = new HttpParams();
+      params.append("creatorId",this.user?._id);
+
+      return this.http.get("http://localhost:8080/api/projects", {params});
+    }
+    else {
+      throw "Error getting projects: User is not logged in."; //I need to come up with a better way to deal with this
+    }
+    
+  }
+
   updateItem(updatedItem: Item) {
     let transferObject = {
-      user: updatedItem
+      item: updatedItem
     };
     this.http.put("http://localhost:8080/api/item", transferObject).subscribe(item => console.log(item));
   }
