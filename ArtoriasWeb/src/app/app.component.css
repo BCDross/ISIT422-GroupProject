@@ -296,9 +296,39 @@ svg#clouds {
 }
 .main-container {
   height: 100%;
-  width: auto;
-  margin: 10px;
+  background-color: dimgrey;
 }
-nav{
+.headBar{
+  background: #004a9f;
+  color: white;
+}
+.settings{
   float: right;
+}
+.sideNavMenu{
+  margin: 1px;
+  width: 200px;
+  background: #002b5c;
+  color: white;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.main-content{
+  height: 100%;
+  width: 90%;
+  border-radius: 10px;
+  margin: 16px;
+  margin-left: 32px;
+  position: relative;
+  display: flex;
+  font-size: 2rem;
+  color: lightgray;
+}
+.menu-button{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
 }

@@ -1,34 +1,36 @@
 <link rel="stylesheet" href="app.component.css">
 
-<nav mat-tab-nav-bar >
-    <button mat-fab color="primary" routerLink="/users" routerLinkActive="active">
+<nav mat-tab-nav-bar class="headBar">
+    <h1 style="width: 98%;">Welcome to Kanban board</h1>
+    <button mat-raised-button routerLink="/" routerLinkActive="active" class="" >Log in </button>
+    <button mat-fab color="primary" routerLink="/users" routerLinkActive="active" class="settings">
         <mat-icon>settings</mat-icon>
     </button>
 
     <!--<a mat-tab-link disabled>Disabled Link</a>-->
 </nav>
 <mat-drawer-container class="main-container">
-    <mat-drawer mode="side" opened>Menu
+    <mat-drawer mode="side" opened class="sideNavMenu mat-elevation-z8">
+        <h3 style="vertical-align: middle;">Menu</h3>
         <mat-list role="list">
             <mat-list-item role="listitem">
-                <button routerLink="/" routerLinkActive="active"> Home Page </button>
+                <button mat-raised-button routerLink="/" routerLinkActive="active" class="menu-button" > Home Page </button>
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button routerLink="/projects" routerLinkActive="active"> Projects Page </button>
+                <button mat-raised-button routerLink="/projects" routerLinkActive="active" class="menu-button"> Projects Page </button>
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button routerLink="/board" routerLinkActive="active"> Board Page </button>
+                <button mat-raised-button routerLink="/board" routerLinkActive="active" class="menu-button"> Board Page </button>
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button routerLink="/list" routerLinkActive="active"> List Page </button>
+                <button mat-raised-button routerLink="/list" routerLinkActive="active" class="menu-button"> List Page </button>
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button routerLink="/admin" routerLinkActive="active"> admin Page </button>
+                <button mat-raised-button routerLink="/admin" routerLinkActive="active" class="menu-button"> Admin Page </button>
             </mat-list-item>
           </mat-list>
     </mat-drawer>
-    <mat-drawer-content>
+    <mat-drawer-content class="main-content mat-elevation-z8">
         <router-outlet></router-outlet>
     </mat-drawer-content>
 </mat-drawer-container>  
-
