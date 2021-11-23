@@ -31,6 +31,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSortModule } from '@angular/material/sort';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NewProjectComponent } from './new-project/new-project.component';
+import { NewUserComponent } from './new-user/new-user.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { NewProjectComponent } from './new-project/new-project.component';
     ProjectsComponent,
     AdminComponent,
     NewItemComponent,
-    NewProjectComponent
+    NewProjectComponent,
+    NewUserComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
