@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Item } from './Objects/item';
-import { Observable, ObservableInput, of, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from './Objects/user';
 import { Project } from './Objects/project';
