@@ -52,7 +52,6 @@ export class DataService {
       }
     };
     let response = this.http.post("http://localhost:8080/api/user", transferObject);
-    //response.subscribe(user => this.user = (user as User));
     
     return response;
     // .pipe(
@@ -79,9 +78,6 @@ export class DataService {
       }
     };
     let response = this.http.post("http://localhost:8080/api/project", transferObject);
-
-    //response.subscribe(project => this.projects.push((project as Project)));
-
     return response;
   }
 

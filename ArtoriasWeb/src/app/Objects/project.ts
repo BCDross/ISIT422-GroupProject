@@ -1,13 +1,15 @@
 import {Item} from './item';
 
 export class Project {
-    _id: string;
+    _id?: string;
     name: string;
+    description: string;
     creator: string;
 
-    constructor(id:string, name: string, creator: string){
-        this._id = id;
+    constructor(name: string, description: string, creator: string, id?:string){
         this.name = name;
+        this.description = description;
         this.creator = creator;
+        this._id = id;
     }
 }

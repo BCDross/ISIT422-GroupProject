@@ -7,8 +7,6 @@ let database: mongoose.Connection;
 export const connect = () => {
 
     const url: string = (process.env.MONGODB_URL as string);
-    // Print the url to the console to check the value is there and correct.
-    //console.log("from connect: process.env.MONGODB_URL :::",url);
 
     if (database) {
         return;

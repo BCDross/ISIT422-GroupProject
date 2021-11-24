@@ -15,16 +15,14 @@ export class NewProjectComponent implements OnInit {
     name: new FormControl()
   });
 
-  idSeed = "0";//VERY temporary solution for generating ID
-
-  constructor(private dataService: DataService, public dialogRef: MatDialogRef<NewProjectComponent>, @Inject(MAT_DIALOG_DATA) public data: Project,) {}
+  constructor(private dataService: DataService, public dialogRef: MatDialogRef<NewProjectComponent>, @Inject(MAT_DIALOG_DATA) public data: Project,){}
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    let newProject:Project = new Project(this.idSeed+="1",
-    this.projectForm.get("name")?.value,
+    let newProject:Project = new Project(this.projectForm.get("name")?.value,
+    this.projectForm.get("description")?.value,
     "fakeID");
     console.log("Project submitted");
     this.dataService.addProject(newProject).subscribe(project => this.data = (project as Project));
