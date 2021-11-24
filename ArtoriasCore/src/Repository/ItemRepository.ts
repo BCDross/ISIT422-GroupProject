@@ -39,8 +39,14 @@ export class ItemRepository {
 
     async updateItem(item: any) {
         let data = {};
-        try {
-            data = await ItemModel.updateOne(item);
+        try {//might need to add more attributes to this list
+            data = await ItemModel.updateOne({_id: item._id},{    
+                name: item.name,
+                status: item.status,
+                priority: item.priority,
+                description: item.description,
+                type: item.type
+            });
         } catch(err) {
             this.logger.error('Error::' + err);
         }

@@ -98,6 +98,7 @@ export class DataService {
     let transferObject = {
       item: updatedItem
     };
+    console.log(transferObject.item._id);
     this.http.put("http://localhost:8080/api/item", transferObject).subscribe(item => console.log(item));
   }
 
