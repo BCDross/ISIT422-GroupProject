@@ -60,6 +60,7 @@ export class BoardComponent implements OnInit {
     } else {
       event.previousContainer.data[event.previousIndex].status = status;
       this.dataService.updateItem(event.previousContainer.data[event.previousIndex]);
+      console.log(event.previousContainer.data[event.previousIndex]._id);
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
