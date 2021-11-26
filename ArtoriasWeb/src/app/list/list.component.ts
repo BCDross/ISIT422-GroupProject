@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Item } from '../Objects/item';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { NewItemComponent } from '../new-item/new-item.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../Objects/user';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Item } from '../Objects/item';
 import { DataService } from '../data.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -31,6 +31,10 @@ export class BoardComponent implements OnInit {
   }
 
   sortItems() {
+    this.newItems = [];
+    this.activeItems = [];
+    this.resolvedItems = [];
+    this.closedItems = [];
     for (const item of this.items) {
       switch(item.status) {
         case "New":
@@ -60,7 +64,7 @@ export class BoardComponent implements OnInit {
     } else {
       event.previousContainer.data[event.previousIndex].status = status;
       this.dataService.updateItem(event.previousContainer.data[event.previousIndex]);
-      console.log(event.previousContainer.data[event.previousIndex]._id);
+
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,

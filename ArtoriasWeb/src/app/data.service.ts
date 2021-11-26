@@ -15,7 +15,6 @@ export class DataService {
   
 
   constructor(private http: HttpClient) { 
-    this.items = [];
   }
 
   getAllItems() {
@@ -98,7 +97,7 @@ export class DataService {
     let transferObject = {
       item: updatedItem
     };
-    console.log(transferObject.item._id);
+    //console.log(transferObject.item._id);
     this.http.put("http://localhost:8080/api/item", transferObject).subscribe(item => console.log(item));
   }
 
