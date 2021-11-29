@@ -15,9 +15,9 @@ export class LoginInfo {
 }
 
 @Component({
-  selector: 'app-new-item',
-  templateUrl: './new-item.component.html',
-  styleUrls: ['./new-item.component.css']
+  selector: 'app-login-form',
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
 
