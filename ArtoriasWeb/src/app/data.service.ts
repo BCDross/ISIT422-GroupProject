@@ -76,22 +76,22 @@ export class DataService {
   }
 
   getUserByEmail(email: string) {
-    let params: HttpParams = new HttpParams();
-    params.append("email",email);
+    // let params: HttpParams = new HttpParams();
+    // params.append("email",email);
 
-    let response = this.http.get("http://localhost:8080/api/user",{params});
+    let response = this.http.get("http://localhost:8080/api/user/"+email);
 
-    response.subscribe(user => this.user = (user as User));
+    //response.subscribe(user => this.user = (user as User));
 
     return response;
   }
 
   getProjectsByUserId() {
     if (this.user && this.user._id) {
-      let params: HttpParams = new HttpParams();
-      params.append("creatorId",this.user._id);
+      // let params: HttpParams = new HttpParams();
+      // params.append("creatorId",this.user._id);
 
-      return this.http.get("http://localhost:8080/api/projects", {params});
+      return this.http.get("http://localhost:8080/api/projects/"+this.user._id);
     }
     else {
       return undefined; //I need to come up with a better way to deal with this

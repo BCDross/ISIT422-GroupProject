@@ -33,16 +33,19 @@ export class NewUserComponent implements OnInit {
       this.userForm.get("email")?.value,
       this.userForm.get("password")?.value,
       this.userForm.get("title")?.value
-      );
+    );
     console.log("User submitted");
-    this.dataService.addUser(newUser).subscribe(user => this.data = (user as User));
+    this.dataService.addUser(newUser).subscribe(user => {
+      this.data = (user as User)
+      if (this.data._id) {
+        this.openDialog(`Welcome, ${this.data.firstName}!`, "Your account has been created, and you can now log in.");
+      }
+      else {
+        this.openDialog("Something went wrong!", "Oh god how did this get here I am not good with computer");
+      }
+    });
     
-    if (this.data._id) {
-      this.openDialog(`Welcome, ${this.data.firstName}!`, "Your account has been created, and you can now log in.");
-    }
-    else {
-      this.openDialog("Something went wrong!", "Oh god how did this get here I am not good with computer");
-    }
+
   }
 
   onNoClick(): void {
@@ -52,6 +55,7 @@ export class NewUserComponent implements OnInit {
   openDialog(title: string, message: string): void {
     const dialogRef = this.dialog.open(PopupComponent, {
       width: '500px',
+      height: "auto",
       data: {title: title, message: message}
     });
   }

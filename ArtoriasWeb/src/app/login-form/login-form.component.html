@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Log In</h1>
 <div mat-dialog-content>
-    <form #loginForm=ngForm [formGroup]="loginForm">
+    <form #newloginForm=ngForm [formGroup]="loginForm">
         <mat-card>
 
                 <mat-form-field appearance="standard" class="formField">
@@ -18,7 +18,7 @@
             <div mat-dialog-actions>
                 <mat-card-actions>
                     <button mat-button (click)="onNoClick()">Cancel</button>
-                    <button mat-raised-button (click)="onSubmit()" type="submit" color="primary" [mat-dialog-close]="true" cdkFocusInitial>Submit</button>
+                    <button mat-raised-button (click)="onSubmit()" type="submit" color="primary" cdkFocusInitial>Submit</button>
                 </mat-card-actions>
             </div>
         </mat-card>

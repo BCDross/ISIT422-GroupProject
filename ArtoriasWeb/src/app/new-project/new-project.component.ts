@@ -16,7 +16,7 @@ export class NewProjectComponent implements OnInit {
     description: new FormControl()
   });
 
-  constructor(private dataService: DataService, public dialogRef: MatDialogRef<NewProjectComponent>, @Inject(MAT_DIALOG_DATA) public data: Project,){}
+  constructor(private dataService: DataService, public dialogRef: MatDialogRef<NewProjectComponent>, @Inject(MAT_DIALOG_DATA) public data: Project){}
 
   ngOnInit(): void {
   }
