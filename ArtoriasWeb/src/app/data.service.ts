@@ -22,6 +22,11 @@ export class DataService {
     return this.http.get("http://localhost:8080/api/items");
   }
 
+  getAllProjects() {
+    console.log("Returning Projects.");
+    return this.http.get("http://localhost:8080/api/projects");
+  }
+
   addItem(newItem: Item) {
     let transferObject = {
       item: {
@@ -58,6 +63,18 @@ export class DataService {
     // ); how the fuck does this thing work actually
   }
 
+  addProject(newProject: Project) {
+    let transferObject = {
+      project: {
+        name: newProject.name,
+        description: newProject.description,
+        creatorId: newProject.creator
+      }
+    };
+    let response = this.http.post("http://localhost:8080/api/project", transferObject);
+    return response;
+  }
+
   getUserByEmail(email: string) {
     let params: HttpParams = new HttpParams();
     params.append("email",email);
@@ -66,17 +83,6 @@ export class DataService {
 
     response.subscribe(user => this.user = (user as User));
 
-    return response;
-  }
-
-  addProject(newProject: Project) {
-    let transferObject = {
-      project: {
-        name: newProject.name,
-        creator: newProject.creator
-      }
-    };
-    let response = this.http.post("http://localhost:8080/api/project", transferObject);
     return response;
   }
 
@@ -104,4 +110,11 @@ export class DataService {
   // handleError(method: string, json: object): ObservableInput<any> {
 
   // }
+
+  updateProject(updatedProject: Project) {
+    let transferObject = {
+      project: updatedProject
+    };
+    this.http.put("http://localhost:8080/api/project", transferObject).subscribe(project => console.log(project));
+  }
 }

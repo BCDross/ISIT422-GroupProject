@@ -13,6 +13,9 @@ th{
 .table-container{
   width: 100%;
 }
+.table-column{
+  width:200px;
+}
 .mat-row:hover{
   background-color: aqua;
 }

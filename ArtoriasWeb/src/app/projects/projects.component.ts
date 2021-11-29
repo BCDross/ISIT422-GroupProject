@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { Project } from '../Objects/project';
+import { MatDialog } from '@angular/material/dialog';
+import { NewProjectComponent } from '../new-project/new-project.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { User } from '../Objects/user';
 
 @Component({
   selector: 'app-projects',
@@ -7,34 +13,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor() { }
+  dataSource: MatTableDataSource<Project>;
+  projects: Project[] = [];
 
-  ngOnInit(): void {
+  displayedColumns = ["name", "description"];
+
+  constructor(private dataService: DataService, public dialog: MatDialog) {
+    this.dataSource = new MatTableDataSource(this.projects);
   }
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  //instead of element_data we put the projects class here that has the data from the database
-  dataSource = ELEMENT_DATA;
+  ngOnInit(): void {
+    this.dataService.getAllProjects().subscribe(response => this.projects = (response as Project[]));
+    this.dataService.getAllProjects().subscribe(response => this.dataSource.data = (response as Project[]));
+    console.log("ngOnInit called");
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(NewProjectComponent, {
+      width: '500px',
+      data: {}, //nothing here yet
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result); //testing
+      this.dataService.getAllProjects().subscribe(response => {
+        this.projects = (response as Project[]);
+        this.dataSource.data = (response as Project[]);
+      });
+    });
+  }
+
 }
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
-
-

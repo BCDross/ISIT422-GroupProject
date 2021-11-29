@@ -42,7 +42,12 @@ export class ProjectRepository {
     async updateProject(project: any) {
         let data = {};
         try {
-            data = await ProjectModel.updateOne(project);
+            data = await ProjectModel.updateOne({_id: project._id},{
+                name: project.name,
+                description: project.description,
+                creatorId: project.creatorId,
+                createDate: project.createDate
+            });
         } catch(err) {
             this.logger.error('Error::' + err);
         }

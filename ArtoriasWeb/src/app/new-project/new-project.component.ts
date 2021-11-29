@@ -12,7 +12,8 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 export class NewProjectComponent implements OnInit {
 
   projectForm = new FormGroup({
-    name: new FormControl()
+    name: new FormControl(),
+    description: new FormControl()
   });
 
   constructor(private dataService: DataService, public dialogRef: MatDialogRef<NewProjectComponent>, @Inject(MAT_DIALOG_DATA) public data: Project,){}
@@ -23,7 +24,7 @@ export class NewProjectComponent implements OnInit {
   onSubmit() {
     let newProject:Project = new Project(this.projectForm.get("name")?.value,
     this.projectForm.get("description")?.value,
-    "fakeID");
+    "618e23408e40169b617b2f1e"); //Hardcoded Darren's user for testing. This will be removed for dynamic adding when we have completed he user sign in process.
     console.log("Project submitted");
     this.dataService.addProject(newProject).subscribe(project => this.data = (project as Project));
   }
