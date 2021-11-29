@@ -33,6 +33,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NewProjectComponent } from './new-project/new-project.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { PopupComponent } from './popup/popup.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     NewItemComponent,
     NewProjectComponent,
     NewUserComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,

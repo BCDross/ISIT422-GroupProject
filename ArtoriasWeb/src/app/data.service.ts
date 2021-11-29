@@ -87,14 +87,14 @@ export class DataService {
   }
 
   getProjectsByUserId() {
-    if (this.user) {
+    if (this.user && this.user._id) {
       let params: HttpParams = new HttpParams();
-      params.append("creatorId",this.user?._id);
+      params.append("creatorId",this.user._id);
 
       return this.http.get("http://localhost:8080/api/projects", {params});
     }
     else {
-      throw "Error getting projects: User is not logged in."; //I need to come up with a better way to deal with this
+      return undefined; //I need to come up with a better way to deal with this
     }
     
   }
