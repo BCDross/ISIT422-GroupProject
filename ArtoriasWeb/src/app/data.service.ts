@@ -117,4 +117,8 @@ export class DataService {
     };
     this.http.put("http://localhost:8080/api/project", transferObject).subscribe(project => console.log(project));
   }
+
+  setCurrentProject(project: Project) {
+    this.currentProject = project;
+  }
 }
