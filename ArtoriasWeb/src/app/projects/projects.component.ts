@@ -15,17 +15,37 @@ export class ProjectsComponent implements OnInit {
 
   dataSource: MatTableDataSource<Project>;
   projects: Project[] = [];
+  currentUser?: User;
 
   displayedColumns = ["name", "description"];
 
-  constructor(private dataService: DataService, public dialog: MatDialog) {
+  constructor(public dataService: DataService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.projects);
   }
 
   ngOnInit(): void {
-    this.dataService.getAllProjects().subscribe(response => this.projects = (response as Project[]));
-    this.dataService.getAllProjects().subscribe(response => this.dataSource.data = (response as Project[]));
+    this.refresh();
     console.log("ngOnInit called");
+  }
+
+  ngDoCheck(): void {
+    if (this.dataService.user != this.currentUser) {
+      this.currentUser = this.dataService.user;
+      this.refresh();
+    }
+  }
+
+  refresh(): void {
+    if (this.dataService.user){
+      try
+      {      
+        this.dataService.getProjectsByUserId().subscribe(response => this.projects = (response as Project[]));
+        this.dataService.getProjectsByUserId().subscribe(response => this.dataSource.data = (response as Project[]));
+      }
+      catch(error) {
+        console.log(error);
+      }
+    }
   }
 
   openDialog(): void {
@@ -37,10 +57,9 @@ export class ProjectsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result); //testing
-      this.dataService.getAllProjects().subscribe(response => {
-        this.projects = (response as Project[]);
-        this.dataSource.data = (response as Project[]);
-      });
+      if (this.dataService.user){
+        this.refresh();
+      }
     });
   }
 

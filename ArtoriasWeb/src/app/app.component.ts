@@ -4,6 +4,7 @@ import { DataService } from './data.service';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { NewProjectComponent } from './new-project/new-project.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { NewUserComponent } from './new-user/new-user.component';
 })
 export class AppComponent {
   title = 'ArtoriasWeb';
-  constructor(private dataService: DataService, public dialog: MatDialog) {
+  constructor(private dataService: DataService, public dialog: MatDialog, private router: Router) {
 
   }
 
@@ -20,6 +21,11 @@ export class AppComponent {
     const dialogRef = this.dialog.open(LoginFormComponent, {
       width: '500px',
       data: {}, //nothing here yet
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      //this.router.navigateByUrl("/projects");
     });
   }
 

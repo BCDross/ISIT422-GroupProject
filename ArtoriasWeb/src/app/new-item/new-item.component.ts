@@ -28,15 +28,18 @@ export class NewItemComponent implements OnInit {
   }
 
   onSubmit() {
-    let newItem:Item = new Item(this.idSeed+="1",
+    if (this.dataService.user?._id && this.dataService.currentProject?._id) {
+      let newItem:Item = new Item(this.idSeed+="1",
       this.itemForm.get("name")?.value,
       this.itemForm.get("status")?.value,
       this.itemForm.get("priority")?.value,
       this.itemForm.get("type")?.value,
-      "fakeID", //creator, but it's nothing until users are set up
+      this.dataService.user._id,
+      this.dataService.currentProject?._id,
       this.itemForm.get("description")?.value);
-    console.log("Item submitted");
-    this.dataService.addItem(newItem).subscribe(item => this.data = (item as Item));
+      console.log("Item submitted");
+      this.dataService.addItem(newItem).subscribe(item => this.data = (item as Item));
+    }
   }
 
   onNoClick(): void {

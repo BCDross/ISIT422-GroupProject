@@ -1,11 +1,11 @@
 <button mat-raised-button (click)="openDialog()" color="primary">New Item</button>
-<button mat-raised-button (click)="addUser()" color="primary">New User (TEST)</button>
+<!-- <button mat-raised-button (click)="addUser()" color="primary">New User (TEST)</button> -->
 
-<mat-list>
+<!-- <mat-list>
     <mat-list-item *ngFor="let item of items">{{item.name}}, {{item.status}}, {{item.priority}}, {{item.description}}, {{item.type}}</mat-list-item>
-</mat-list>
+</mat-list> -->
 <br>
-<div *ngIf="items.length != 0">
+<div *ngIf="dataService.currentProject; else loggedOut">
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
@@ -39,3 +39,5 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
 </div>
+<ng-template #loggedOut><p>You are not logged in!</p></ng-template>
+

@@ -18,13 +18,18 @@ export class ListComponent implements OnInit {
 
   displayedColumns = ["name","status","priority","type"]; // for displaying table columns
 
-  constructor(private dataService: DataService, public dialog: MatDialog) {
+  constructor(public dataService: DataService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.items);
   }
 
   ngOnInit(): void {
-    this.dataService.getAllItems().subscribe(response => this.items = (response as Item[]));
-    this.dataService.getAllItems().subscribe(response => this.dataSource.data = (response as Item[]));
+    
+    if (this.dataService.currentProject) {
+      this.dataService.getItemsByProject().subscribe(response => {
+        this.items = (response as Item[]);
+        this.dataSource.data = (response as Item[]);
+      });
+    }
     console.log("ngOnInit called");
      //temp solution
   }
@@ -38,7 +43,7 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result); //testing
-      this.dataService.getAllItems().subscribe(response => {
+      this.dataService.getItemsByProject().subscribe(response => {
         this.items = (response as Item[]);
         this.dataSource.data = (response as Item[]);
       });

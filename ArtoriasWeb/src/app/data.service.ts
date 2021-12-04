@@ -3,6 +3,7 @@ import { Item } from './Objects/item';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from './Objects/user';
 import { Project } from './Objects/project';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,6 @@ export class DataService {
   items: Item[] = [];
   projects: Project[] = [];
   currentProject?: Project;
-  
 
   constructor(private http: HttpClient) { 
   }
@@ -20,6 +20,15 @@ export class DataService {
   getAllItems() {
     console.log("Returning items.");
     return this.http.get("http://localhost:8080/api/items");
+  }
+
+  getItemsByProject() {
+    if (this.currentProject) {
+      return this.http.get("http://localhost:8080/api/items/"+this.currentProject._id);
+    }
+    else {
+      return new Observable;
+    }
   }
 
   getAllProjects() {
@@ -35,8 +44,8 @@ export class DataService {
         priority: newItem.priority,
         description: newItem.description,
         type: newItem.type,
-        creatorId: "fakeID",
-        projectId: "fakeID",
+        creatorId: newItem.creatorID,
+        projectId: newItem.projectID,
         parentId: newItem.parentID,
         owner: newItem.owner
       }
@@ -94,7 +103,7 @@ export class DataService {
       return this.http.get("http://localhost:8080/api/projects/"+this.user._id);
     }
     else {
-      return undefined; //I need to come up with a better way to deal with this
+      return new Observable; //I need to come up with a better way to deal with this
     }
     
   }
@@ -120,5 +129,6 @@ export class DataService {
 
   setCurrentProject(project: Project) {
     this.currentProject = project;
+    
   }
 }
