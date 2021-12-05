@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from './Objects/user';
 import { Project } from './Objects/project';
 import { Observable } from 'rxjs';
+import { LoginInfo } from './login-form/login-form.component';
 
 @Injectable({
   providedIn: 'root'
@@ -93,6 +94,10 @@ export class DataService {
     //response.subscribe(user => this.user = (user as User));
 
     return response;
+  }
+
+  userLogin(loginInfo: LoginInfo) {
+    return this.http.get("http://localhost:8080/api/login/"+loginInfo.email + "/" + loginInfo.password);
   }
 
   getProjectsByUserId() {

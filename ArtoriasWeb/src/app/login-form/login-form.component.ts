@@ -40,7 +40,7 @@ export class LoginFormComponent implements OnInit {
       this.loginForm.get("password")?.value)
 
       //temporary until there's an actual log-in route
-    this.dataService.getUserByEmail(loginInfo.email).subscribe(user => {
+    this.dataService.userLogin(loginInfo).subscribe(user => {
       this.data = (user as User);
       if (this.data && this.data._id) {
         this.dataService.user = this.data;
