@@ -65,6 +65,11 @@ class App {
             console.log(req.params);
             this.userController.getUserByEmail(req.params.email).then(data => res.json(data));
         });
+
+        this.express.get('/api/login/:email/:password', (req, res) => {
+            console.log(req.params);
+            this.userController.userLogin(req.params.email, req.params.password).then(data => res.json(data));
+        });
         
         this.express.post('/api/user', (req, res) => {
             console.log(req.body);

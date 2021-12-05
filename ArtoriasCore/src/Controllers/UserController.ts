@@ -21,6 +21,11 @@ export class UserController {
         return await this.userService.getUserByEmail(email);
     }
 
+    async userLogin(email: any, password: any) {
+        //this.logger.info('Controller: userLogin', user, password)
+        return await this.userService.userLogin(email, password);
+    }
+
     async createUser(user: any) {
         this.logger.info('Controller: createUser', user);
         return await this.userService.createUser(user);

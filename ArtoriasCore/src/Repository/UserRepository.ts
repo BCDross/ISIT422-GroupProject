@@ -27,6 +27,16 @@ export class UserRepository {
         return user;
     }
 
+    async userLogin(email: any, password: any) {
+        let user;
+        try { 
+            user = await UserModel.findOne({email: email, password: password});
+        } catch(err) {
+            this.logger.error('Error:' + err);
+        }
+        return user;
+    }
+
     async createUser(user: any) {
         let data = {};
         try {

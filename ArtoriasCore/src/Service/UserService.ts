@@ -16,6 +16,10 @@ export class UserService {
         return await this.userRepository.getUserByEmail(email);
     }
 
+    async userLogin(email: any, password: any) {
+        return await this.userRepository.userLogin(email, password);
+    }
+
     async createUser(user: any) {
         return await this.userRepository.createUser(user);
     }
