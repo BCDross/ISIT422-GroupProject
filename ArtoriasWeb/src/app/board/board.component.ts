@@ -20,14 +20,16 @@ export class BoardComponent implements OnInit {
   closedItems: Item[] = [];
 
   constructor(private dataService: DataService, public dialog: MatDialog) {
-    this.dataService.getAllItems().subscribe(response => {
-      this.items = (response as Item[]);
-      this.sortItems();
-      console.log("Items received");
-    });
   }
 
   ngOnInit(): void {
+    if (this.dataService.currentProject) {
+      this.dataService.getItemsByProject().subscribe(response => {
+        this.items = (response as Item[]);
+        this.sortItems();
+        console.log("Items received");
+      });
+    }
   }
 
   sortItems() {
@@ -84,10 +86,13 @@ export class BoardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result); //testing
-      this.dataService.getAllItems().subscribe(response => {
-        this.items = (response as Item[]);
-        this.sortItems();
-      });
+      if (this.dataService.currentProject) {
+        this.dataService.getItemsByProject().subscribe(response => {
+          this.items = (response as Item[]);
+          this.sortItems();
+          console.log("Items received");
+        });
+      }
     });
   }
 

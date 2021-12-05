@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'ArtoriasWeb';
-  constructor(private dataService: DataService, public dialog: MatDialog, private router: Router) {
+  constructor(public dataService: DataService, public dialog: MatDialog, private router: Router) {
 
   }
 

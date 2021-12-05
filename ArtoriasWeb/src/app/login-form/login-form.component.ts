@@ -4,6 +4,7 @@ import { DataService } from '../data.service';
 import { User } from '../Objects/user';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import { PopupComponent } from '../popup/popup.component';
+import { Router } from '@angular/router';
 
 export class LoginInfo {
   email: string;
@@ -12,7 +13,7 @@ export class LoginInfo {
   constructor(email: string, password: string) {
     this.email = email;
     this.password = password;
-  } 
+  }
 }
 
 @Component({
@@ -28,7 +29,7 @@ export class LoginFormComponent implements OnInit {
   });
   
   //data type is a placeholder, not sure if I wanna use it
-  constructor(private dataService: DataService,public dialogRef: MatDialogRef<LoginFormComponent>,  @Inject(MAT_DIALOG_DATA) public data: User,public dialog: MatDialog){} 
+  constructor(private dataService: DataService,public dialogRef: MatDialogRef<LoginFormComponent>,  @Inject(MAT_DIALOG_DATA) public data: User,public dialog: MatDialog, private router: Router){} 
 
   ngOnInit(): void {
   }
@@ -41,10 +42,11 @@ export class LoginFormComponent implements OnInit {
       //temporary until there's an actual log-in route
     this.dataService.getUserByEmail(loginInfo.email).subscribe(user => {
       this.data = (user as User);
-      if (this.data._id) {
+      if (this.data && this.data._id) {
         this.dataService.user = this.data;
         console.log(`${this.data.firstName} has logged in.`);
         this.dialogRef.close();
+        this.router.navigate(["/projects"]);
       }
       else {
         console.log("Log-in failed.");

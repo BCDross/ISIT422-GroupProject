@@ -17,18 +17,22 @@
             <mat-list-item role="listitem">
                 <button mat-raised-button routerLink="/" routerLinkActive="active" class="menu-button" > Home Page </button>
             </mat-list-item>
-            <mat-list-item role="listitem">
-                <button mat-raised-button routerLink="/projects" routerLinkActive="active" class="menu-button"> Projects Page </button>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-                <button mat-raised-button routerLink="/board" routerLinkActive="active" class="menu-button"> Board Page </button>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-                <button mat-raised-button routerLink="/list" routerLinkActive="active" class="menu-button"> List Page </button>
-            </mat-list-item>
-            <mat-list-item role="listitem">
+            <div *ngIf="dataService.user">
+                <mat-list-item role="listitem">
+                    <button mat-raised-button routerLink="/projects" routerLinkActive="active" class="menu-button"> Projects Page </button>
+                </mat-list-item>
+            </div>
+            <div *ngIf="dataService.currentProject">
+                <mat-list-item role="listitem">
+                    <button mat-raised-button routerLink="/board" routerLinkActive="active" class="menu-button"> Board Page </button>
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                    <button mat-raised-button routerLink="/list" routerLinkActive="active" class="menu-button"> List Page </button>
+                </mat-list-item>
+            </div>
+            <!-- <mat-list-item role="listitem">
                 <button mat-raised-button routerLink="/admin" routerLinkActive="active" class="menu-button"> Admin Page </button>
-            </mat-list-item>
+            </mat-list-item> -->
           </mat-list>
     </mat-drawer>
     <mat-drawer-content class="main-content mat-elevation-z8">
