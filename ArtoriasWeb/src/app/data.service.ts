@@ -14,18 +14,19 @@ export class DataService {
   items: Item[] = [];
   projects: Project[] = [];
   currentProject?: Project;
+  private url = "http://artoriascore.azurewebsites.net";
 
   constructor(private http: HttpClient) { 
   }
 
   getAllItems() {
     console.log("Returning items.");
-    return this.http.get("http://localhost:8080/api/items");
+    return this.http.get(this.url+ "/api/items");
   }
 
   getItemsByProject() {
     if (this.currentProject) {
-      return this.http.get("http://localhost:8080/api/items/"+this.currentProject._id);
+      return this.http.get(this.url+ "/api/items/"+this.currentProject._id);
     }
     else {
       return new Observable;
@@ -34,7 +35,7 @@ export class DataService {
 
   getAllProjects() {
     console.log("Returning Projects.");
-    return this.http.get("http://localhost:8080/api/projects");
+    return this.http.get(this.url+ "/api/projects");
   }
 
   addItem(newItem: Item) {
@@ -52,7 +53,7 @@ export class DataService {
       }
     }
 
-    return this.http.post("http://localhost:8080/api/item", transferObject);
+    return this.http.post(this.url+ "/api/item", transferObject);
   }
 
   addUser(newUser: User) {
@@ -65,7 +66,7 @@ export class DataService {
         title: newUser.title
       }
     };
-    let response = this.http.post("http://localhost:8080/api/user", transferObject);
+    let response = this.http.post(this.url+ "/api/user", transferObject);
     
     return response;
     // .pipe(
@@ -81,7 +82,7 @@ export class DataService {
         creatorId: newProject.creator
       }
     };
-    let response = this.http.post("http://localhost:8080/api/project", transferObject);
+    let response = this.http.post(this.url+ "/api/project", transferObject);
     return response;
   }
 
@@ -89,7 +90,7 @@ export class DataService {
     // let params: HttpParams = new HttpParams();
     // params.append("email",email);
 
-    let response = this.http.get("http://localhost:8080/api/user/"+email);
+    let response = this.http.get(this.url+ "/api/user/"+email);
 
     //response.subscribe(user => this.user = (user as User));
 
@@ -97,7 +98,7 @@ export class DataService {
   }
 
   userLogin(loginInfo: LoginInfo) {
-    return this.http.get("http://localhost:8080/api/login/"+loginInfo.email + "/" + loginInfo.password);
+    return this.http.get(this.url+ "/api/login/"+loginInfo.email + "/" + loginInfo.password);
   }
 
   getProjectsByUserId() {
@@ -105,7 +106,7 @@ export class DataService {
       // let params: HttpParams = new HttpParams();
       // params.append("creatorId",this.user._id);
 
-      return this.http.get("http://localhost:8080/api/projects/"+this.user._id);
+      return this.http.get(this.url+ "/api/projects/"+this.user._id);
     }
     else {
       return new Observable; //I need to come up with a better way to deal with this
@@ -118,7 +119,7 @@ export class DataService {
       item: updatedItem
     };
     //console.log(transferObject.item._id);
-    this.http.put("http://localhost:8080/api/item", transferObject).subscribe(item => console.log(item));
+    this.http.put(this.url+ "/api/item", transferObject).subscribe(item => console.log(item));
   }
 
   // handleError(method: string, json: object): ObservableInput<any> {
@@ -129,7 +130,7 @@ export class DataService {
     let transferObject = {
       project: updatedProject
     };
-    this.http.put("http://localhost:8080/api/project", transferObject).subscribe(project => console.log(project));
+    this.http.put(this.url+ "/api/project", transferObject).subscribe(project => console.log(project));
   }
 
   setCurrentProject(project: Project) {
