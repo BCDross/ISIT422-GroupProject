@@ -14,7 +14,7 @@ export class DataService {
   items: Item[] = [];
   projects: Project[] = [];
   currentProject?: Project;
-  private url = "http://artoriascore.azurewebsites.net";
+  private url = "https://artoriascore.azurewebsites.net";
 
   constructor(private http: HttpClient) { 
   }

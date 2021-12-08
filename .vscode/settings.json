@@ -8,5 +8,6 @@
   "appService.zipIgnorePattern": [
     "node_modules{,/**}",
     ".vscode{,/**}"
-  ]
+  ],
+  "appService.showBuildDuringDeployPrompt": false
 }

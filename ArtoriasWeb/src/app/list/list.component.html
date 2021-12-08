@@ -13,25 +13,25 @@
       
         <!-- Position Column -->
         <ng-container class="pn" matColumnDef="name">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> Name </th>
+          <th mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Sort by name"> Name </th>
           <td mat-cell *matCellDef="let item"> {{item.name}} </td>
         </ng-container>
       
         <!-- Name Column -->
         <ng-container matColumnDef="status">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> Status </th>
+          <th mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Sort by status"> Status </th>
           <td mat-cell *matCellDef="let item"> {{item.status}} </td>
         </ng-container>
       
         <!-- Weight Column -->
         <ng-container matColumnDef="priority">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> Priority </th>
+          <th mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Sort by priority"> Priority </th>
           <td mat-cell *matCellDef="let item"> {{item.priority}} </td>
         </ng-container>
       
         <!-- Symbol Column -->
         <ng-container matColumnDef="type">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> Type </th>
+          <th mat-header-cell mat-sort-header *matHeaderCellDef sortActionDescription="Sort by type"> Type </th>
           <td mat-cell *matCellDef="let item"> {{item.type}} </td>
         </ng-container>
       
