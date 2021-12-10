@@ -34,6 +34,7 @@ import { NewProjectComponent } from './new-project/new-project.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { PopupComponent } from './popup/popup.component';
+import { EditFormComponent } from './edit-form/edit-form.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { PopupComponent } from './popup/popup.component';
     NewProjectComponent,
     NewUserComponent,
     LoginFormComponent,
-    PopupComponent
+    PopupComponent,
+    EditFormComponent
   ],
   imports: [
     BrowserModule,
