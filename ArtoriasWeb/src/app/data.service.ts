@@ -29,6 +29,10 @@ export class DataService {
     return this.http.get(this.url+ "/api/items");
   }
 
+  deleteItem(deletedItem: Item) {
+    return this.http.delete(this.url+ "/api/item/"+deletedItem._id);
+  }
+
   getItemsByProject() {
     if (this.currentProject) {
       return this.http.get(this.url+ "/api/items/"+this.currentProject._id);

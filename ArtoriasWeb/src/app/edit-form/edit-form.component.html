@@ -1,1 +1,55 @@
-<p>edit-form works!</p>
+<h1 mat-dialog-title>Edit Item</h1>
+<div mat-dialog-content>
+    <form #editItemForm=ngForm [formGroup]="itemForm">
+        <mat-card>
+            <p>
+                <mat-form-field appearance="standard" class="formField">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" formControlName = "name" required>
+                </mat-form-field>
+    
+                <mat-form-field appearance="standard" class="formField">
+                    <mat-label>Priority</mat-label>
+                    <input matInput type="number" formControlName = "priority" required>
+                </mat-form-field>
+            </p>
+    
+            <p>
+                <mat-form-field appearance="standard" class="formField">
+                    <mat-label>Status</mat-label>
+                    <mat-select matInput formControlName = "status" required>
+                        <mat-option value="New">New</mat-option>
+                        <mat-option value="Active">Active</mat-option>
+                        <mat-option value="Resolved">Resolved</mat-option>
+                        <mat-option value="Closed">Closed</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+                <mat-form-field appearance="standard" class="formField">
+                    <mat-label>Type</mat-label>
+                    <mat-select matInput formControlName = "type" required>
+                        <mat-option value="Bug">Bug</mat-option>
+                        <mat-option value="Epic">Epic</mat-option>
+                        <mat-option value="Feature">Feature</mat-option>
+                        <mat-option value="Userstory">User Story</mat-option>
+                        <mat-option value="Task">Task</mat-option>
+                        <mat-option value="Issue">Issue</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+    
+            <mat-form-field appearance="standard" class="formField">
+                <mat-label>Description</mat-label>
+                <textarea rows="4" cols="200" matInput formControlName = "description" ></textarea>
+            </mat-form-field>
+
+            <div mat-dialog-actions>
+                <mat-card-actions>
+                    <button mat-button (click)="onNoClick()">Cancel</button>
+                    <button mat-raised-button (click)="onSubmit()" type="submit" color="primary" [mat-dialog-close]="true" cdkFocusInitial>Save changes</button>
+                    <button mat-raised-button (click)="onDelete()" type="submit" color="warn" [mat-dialog-close]="true" cdkFocusInitial>Delete Item</button>
+                </mat-card-actions>
+            </div>
+        </mat-card>
+    </form>
+</div>

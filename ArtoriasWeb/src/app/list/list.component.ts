@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { Item } from '../Objects/item';
 import { MatDialog } from '@angular/material/dialog';
 import { NewItemComponent } from '../new-item/new-item.component';
+import { EditFormComponent } from '../edit-form/edit-form.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../Objects/user';
 
@@ -16,7 +17,7 @@ export class ListComponent implements OnInit {
   dataSource: MatTableDataSource<Item>;
   items: Item[] = [];//local copy of the list of items to display
 
-  displayedColumns = ["name","status","priority","type"]; // for displaying table columns
+  displayedColumns = ["name","status","priority","type", "edit"]; // for displaying table columns
 
   constructor(public dataService: DataService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.items);
@@ -43,6 +44,23 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result); //testing
+      this.dataService.getItemsByProject().subscribe(response => {
+        this.items = (response as Item[]);
+        this.dataSource.data = (response as Item[]);
+      });
+    });
+  }
+
+  openEdit(item: Item): void {
+    console.log(item.name);
+    const dialogRef = this.dialog.open(EditFormComponent, {
+      width: '500px',
+      data: item, //nothing here yet
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //console.log(result); //testing
       this.dataService.getItemsByProject().subscribe(response => {
         this.items = (response as Item[]);
         this.dataSource.data = (response as Item[]);

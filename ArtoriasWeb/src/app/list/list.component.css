@@ -11,3 +11,11 @@
 table {
   width: 100%;
 }
+
+td {
+  padding: 20px;
+}
+
+th {
+  padding: 20px;
+}
