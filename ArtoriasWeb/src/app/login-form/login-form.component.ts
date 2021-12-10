@@ -45,6 +45,8 @@ export class LoginFormComponent implements OnInit {
       if (this.data && this.data._id) {
         this.dataService.user = this.data;
         console.log(`${this.data.firstName} has logged in.`);
+        document.cookie = "email=" + this.data.email + "; max-age=3600";
+        document.cookie = "password=" + this.data.password + "; max-age=3600";
         this.dialogRef.close();
         this.router.navigate(["/projects"]);
       }

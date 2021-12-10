@@ -5,6 +5,7 @@ import { User } from './Objects/user';
 import { Project } from './Objects/project';
 import { Observable } from 'rxjs';
 import { LoginInfo } from './login-form/login-form.component';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,13 @@ export class DataService {
   items: Item[] = [];
   projects: Project[] = [];
   currentProject?: Project;
-  private url = "https://artoriascore.azurewebsites.net";
+  // private url = "https://artoriascore.azurewebsites.net";
+  private url = "http://localhost:8080";
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private router: Router) { 
+  }
+
+  ngOnInit(): void {
   }
 
   getAllItems() {
