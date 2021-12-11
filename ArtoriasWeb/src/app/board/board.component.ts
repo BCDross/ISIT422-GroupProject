@@ -4,6 +4,7 @@ import { Item } from '../Objects/item';
 import { DataService } from '../data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewItemComponent } from '../new-item/new-item.component';
+import { EditFormComponent } from '../edit-form/edit-form.component';
 
 @Component({
   selector: 'app-project',
@@ -96,4 +97,20 @@ export class BoardComponent implements OnInit {
     });
   }
 
+  openEdit(item: Item): void {
+    console.log(item.name);
+    const dialogRef = this.dialog.open(EditFormComponent, {
+      width: '500px',
+      data: item, //nothing here yet
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //console.log(result); //testing
+      this.dataService.getItemsByProject().subscribe(response => {
+        this.items = (response as Item[]);
+        this.sortItems();
+      });
+    });
+  }
 }
