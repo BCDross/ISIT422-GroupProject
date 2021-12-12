@@ -69,7 +69,7 @@ export class AppComponent {
     document.cookie = "email= ; password= ; "
     this.dataService.user = undefined;
     this.dataService.currentProject = undefined;
-    this.router.navigate(["/"]);
+    this.router.navigate(["/home"]);
   }
 
   addCard(){}

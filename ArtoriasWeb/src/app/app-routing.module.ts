@@ -6,10 +6,12 @@ import { ListComponent } from './list/list.component';
 import { BoardComponent } from './board/board.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { UsersComponent } from './users/users.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   //{ path: 'home-component', component: AppComponent },
   //{ path: '', redirectTo: '/list', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'board', component: BoardComponent },
   { path: 'list', component: ListComponent },
