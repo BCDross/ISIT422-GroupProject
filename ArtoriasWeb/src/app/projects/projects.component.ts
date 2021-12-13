@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewProjectComponent } from '../new-project/new-project.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../Objects/user';
+import { EditProjectComponent } from '../edit-project/edit-project.component';
 
 @Component({
   selector: 'app-projects',
@@ -63,4 +64,20 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
+  openEdit(project: Project): void {
+    console.log(project.name);
+    const dialogRef = this.dialog.open(EditProjectComponent, {
+      width: '500px',
+      data: project, //nothing here yet
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //console.log(result); //testing
+      this.dataService.getItemsByProject().subscribe(response => {
+        this.projects = (response as Project[]);
+        this.dataSource.data = (response as Project[]);
+      });
+    });
+  }
 }

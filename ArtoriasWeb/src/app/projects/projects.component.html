@@ -12,6 +12,11 @@
       <th mat-header-cell *matHeaderCellDef> Description </th>
       <td mat-cell *matCellDef="let element"> <a routerLink="/list" routerLinkActive="active" (click)="dataService.setCurrentProject(element)">{{element.description}}</a> </td>
     </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let element"> <a (click)="openEdit(element)">Edit</a> </td>
+    </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

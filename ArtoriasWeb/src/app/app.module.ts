@@ -36,6 +36,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { PopupComponent } from './popup/popup.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { HomeComponent } from './home/home.component';
+import { EditProjectComponent } from './edit-project/edit-project.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { HomeComponent } from './home/home.component';
     LoginFormComponent,
     PopupComponent,
     EditFormComponent,
-    HomeComponent
+    HomeComponent,
+    EditProjectComponent
   ],
   imports: [
     BrowserModule,

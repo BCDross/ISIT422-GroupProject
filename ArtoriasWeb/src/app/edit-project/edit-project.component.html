@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Edit Project</h1>
+<div mat-dialog-content>
+    <form #editForm=ngForm [formGroup]="editProjectForm">
+        <mat-card>
+            <p>
+                <mat-form-field appearance="standard" class="formField">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" formControlName = "name" required>
+                </mat-form-field>
+    
+            <mat-form-field appearance="standard" class="formField">
+                <mat-label>Description</mat-label>
+                <textarea rows="4" cols="200" matInput formControlName = "description" ></textarea>
+            </mat-form-field>
+
+            <div mat-dialog-actions>
+                <mat-card-actions>
+                    <button mat-button (click)="onNoClick()">Cancel</button>
+                    <button mat-raised-button (click)="onSubmit()" type="submit" color="primary" [mat-dialog-close]="true" cdkFocusInitial>Save changes</button>
+                    <button mat-raised-button (click)="onDelete()" type="submit" color="warn" [mat-dialog-close]="true" cdkFocusInitial>Delete Project</button>
+                </mat-card-actions>
+            </div>
+        </mat-card>
+    </form>
+</div>

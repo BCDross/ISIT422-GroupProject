@@ -146,4 +146,8 @@ export class DataService {
     this.currentProject = project;
     
   }
+
+  deleteProject(deletedProject: Project) {
+    return this.http.delete(this.url+ "/api/project/"+deletedProject._id);
+  }
 }
