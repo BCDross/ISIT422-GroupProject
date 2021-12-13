@@ -18,7 +18,7 @@ export class ProjectsComponent implements OnInit {
   projects: Project[] = [];
   currentUser?: User;
 
-  displayedColumns = ["name", "description"];
+  displayedColumns = ["name", "description", "edit"];
 
   constructor(public dataService: DataService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.projects);

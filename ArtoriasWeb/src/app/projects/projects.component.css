@@ -9,13 +9,20 @@
 }
 th{
   color: white;
+  padding: 20px;
+}
+td {
+  padding: 20px;
+}
+table {
+  width: 100%;
 }
 .table-container{
   width: 100%;
 }
-.table-column{
+/* .table-column{
   width:200px;
-}
+} */
 .mat-row:hover{
   background-color: aqua;
 }
